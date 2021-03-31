@@ -25,9 +25,10 @@ public class CategoryService {
         this.categoryRepository.deleteById(id);
     }
 
-    public Category getById (Long id) {
-        return this.categoryRepository.getById(id);
+    public Category getById(Long id) {
+        return this.categoryRepository.findById(id).orElse(null);
     }
+
 
     public List<Category> findAll() {
         return this.categoryRepository.findAll();

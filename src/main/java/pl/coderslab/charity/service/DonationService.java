@@ -26,7 +26,7 @@ public class DonationService {
     }
 
     public Donation findById(Long id) {
-        return this.donationRepository.getById(id);
+        return this.donationRepository.findById(id).orElse(null);
     }
 
     public List<Donation> findAll() {

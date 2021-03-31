@@ -6,7 +6,7 @@ import java.time.LocalTime;
 import java.util.List;
 
 @Entity
-@Table(name = "Donations")
+@Table(name = "donation")
 public class Donation {
 
     @Id
@@ -14,10 +14,11 @@ public class Donation {
     private Long id;
     private Integer quantity;
 
-    @OneToMany(mappedBy = "donation",cascade = CascadeType.REMOVE)
-    private List<Category> categoryList;
+    @ManyToMany
+    @JoinTable(name = "donation_category")
+    private List<Category> categories;
 
-    @OneToOne
+    @ManyToOne
     private Institution institution;
 
     private String street;
@@ -46,11 +47,11 @@ public class Donation {
     }
 
     public List<Category> getCategoryList() {
-        return categoryList;
+        return categories;
     }
 
     public Donation setCategoryList(List<Category> categoryList) {
-        this.categoryList = categoryList;
+        this.categories = categoryList;
         return this;
     }
 

@@ -4,7 +4,7 @@ package pl.coderslab.charity.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Institution")
+@Table(name = "institution")
 public class Institution {
 
     @Id
