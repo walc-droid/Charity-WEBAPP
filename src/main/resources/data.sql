@@ -3,6 +3,7 @@ INSERT INTO Category (id,name) VALUES (2,'Elektronika');
 INSERT INTO Category (id,name) VALUES (3,'Zabawki');
 INSERT INTO Category (id,name) VALUES (4,'Żywność');
 INSERT INTO Category (id,name) VALUES (5,'Pieniądze');
+INSERT INTO Category (id,name) VALUES (6,'Ksiązki');
 
 INSERT INTO Institution (id,name,description) VALUES (1,'Dbam o Zdrowie','Pomoc dzieciom z ubogich rodzin');
 INSERT INTO Institution (id,name,description) VALUES (2,'Dla dzieci','Pomoc osobom znajdującym się w trudnej sytuacji życiowej');

@@ -9,6 +9,7 @@ import pl.coderslab.charity.entity.Donation;
 import pl.coderslab.charity.entity.Institution;
 import pl.coderslab.charity.repository.DonationRepository;
 import pl.coderslab.charity.repository.InstitutionRepository;
+import pl.coderslab.charity.service.CategoryService;
 import pl.coderslab.charity.service.DonationService;
 import pl.coderslab.charity.service.InstitutionService;
 
@@ -22,8 +23,6 @@ public class HomeController {
     private InstitutionService institutionService;
     @Autowired
     private DonationService donationService;
-
-
 
     @RequestMapping("/")
     public String homeAction(Model model) {
