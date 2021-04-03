@@ -33,4 +33,12 @@ public class DonationService {
         return this.donationRepository.findAll();
     }
 
+    public Long quantityOfBags() {
+        return this.donationRepository.quantityOfBags();
+    }
+
+    public Long donationsCount() {
+        return this.donationRepository.count();
+    }
+
 }
