@@ -17,7 +17,7 @@
 <%@include file="header.jsp" %>
 
 <section class="stats">
-    <div class="container container--85">6
+    <div class="container container--85">
         <div class="stats--item">
             <em><c:out value="${quantityOfBags}"/> </em>
             <h3>Oddanych worków</h3>
