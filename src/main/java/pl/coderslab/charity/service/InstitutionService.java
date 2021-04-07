@@ -34,4 +34,9 @@ public class InstitutionService {
         return this.institutionRepository.findAll();
     }
 
+    public List<Institution> findTop4() {
+        return this.institutionRepository.findTop4By();
+    }
+
+
 }

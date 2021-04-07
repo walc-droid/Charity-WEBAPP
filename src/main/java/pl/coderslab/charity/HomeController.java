@@ -34,7 +34,7 @@ public class HomeController {
 
     @ModelAttribute("institution")
     public List<Institution> institutions() {
-        return this.institutionService.findAll();
+        return this.institutionService.findTop4();
     }
 
     @ModelAttribute("donation")

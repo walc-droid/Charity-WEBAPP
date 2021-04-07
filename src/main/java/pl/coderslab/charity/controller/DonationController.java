@@ -21,13 +21,16 @@ import java.util.List;
 @RequestMapping("/donation")
 public class DonationController {
 
-    @Autowired
-    private DonationService donationService;
-    @Autowired
-    private InstitutionService institutionService;
-    @Autowired
-    private CategoryService categoryService;
 
+    private final DonationService donationService;
+    private final InstitutionService institutionService;
+    private final CategoryService categoryService;
+
+    public DonationController(DonationService donationService, InstitutionService institutionService, CategoryService categoryService) {
+        this.donationService = donationService;
+        this.institutionService = institutionService;
+        this.categoryService = categoryService;
+    }
 
     @GetMapping("/add")
     public String add(Model model) {

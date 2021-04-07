@@ -12,6 +12,6 @@ public class CategoryConverter implements Converter<String,Category> {
 
     @Override
     public Category convert (String s) {
-        return this.categoryRepository.getOne(Long.parseLong(s));
+        return this.categoryRepository.findById(Long.parseLong(s)).orElseThrow(()->new IllegalArgumentException("Category not found"));
     }
 }

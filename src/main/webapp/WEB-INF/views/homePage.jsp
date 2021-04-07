@@ -2,18 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
-<!DOCTYPE html>
-<html lang="pl">
-<head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-    <title>Document</title>
 
-    <link rel="stylesheet" href="<c:url value="resources/css/style.css"/>"/>
-
-</head>
-<body>
 <%@include file="header.jsp" %>
 
 <section class="stats">
@@ -85,27 +74,23 @@
 
         <ul class="help--slides-items">
 
-            <li>
-            <c:forEach items="${institution}" var="inst" varStatus="status" step="1" begin="0" end="1">
 
-                <div class="col" id="${status.index % 2}">
+            <c:forEach items="${institution}" var="inst" varStatus="status">
+
+                <c:if test="${status.count % 2 != 0}">
+                    <li>
+                </c:if>
+                <div class="col">
                     <div class="title">Fundacja: ${inst.name}</div>
                     <div class="subtitle">Cel i misja: ${inst.description}</div>
                 </div>
+                <c:if test="${status.count % 2 == 0}">
+                    </li>
+                </c:if>
 
             </c:forEach>
-            </li>
 
-            <li>
-                <c:forEach items="${institution}" var="inst" varStatus="status" step="1" begin="2" end="3">
 
-                    <div class="col" id="${status.index % 2}">
-                        <div class="title">Fundacja: ${inst.name}</div>
-                        <div class="subtitle">Cel i misja: ${inst.description}</div>
-                    </div>
-
-                </c:forEach>
-            </li>
 
         </ul>
     </div>
@@ -115,6 +100,3 @@
 
 <%@include file="footer.jsp" %>
 
-<script src="<c:url value="resources/js/app.js"/>"></script>
-</body>
-</html>
