@@ -35,7 +35,7 @@ public class DonationController {
     @GetMapping("/add")
     public String add(Model model) {
         model.addAttribute("donation", new Donation());
-        return "addDonation";
+        return "form";
     }
 
     @PostMapping("/add")
