@@ -30,6 +30,7 @@
         <div class="form--steps-counter">Krok <span>1</span>/4</div>
 
         <form:form method="post" modelAttribute="donation">
+
             <!-- STEP 1: class .active is switching steps -->
             <div data-step="1" class="active">
                 <h3>Zaznacz co chcesz oddać:</h3>
@@ -48,7 +49,7 @@
 
                 </div>
                 </c:forEach>
-
+                <form:errors path="categories"/>
                 <div class="form-group form-group--buttons">
                     <button type="button" class="btn next-step">Dalej</button>
                 </div>
@@ -62,15 +63,23 @@
                     <label>
                         Liczba 60l worków:
                         <input type="number" name="quantity" step="1" min="1" />
+                        <form:errors path="quantity"/>
+
+                        <script>
+                              function myFunction() {
+                                  var quantityValue = document.querySelector('[name="quantity"]').value;
+                                  document.getElementById("quantityID").innerHTML = quantityValue;
+                             }
+                        </script>
                     </label>
                 </div>
 
+
                 <div class="form-group form-group--buttons">
                     <button type="button" class="btn prev-step">Wstecz</button>
-                    <button type="button" class="btn next-step">Dalej</button>
+                    <button type="button" class="btn next-step" onclick="myFunction()">Dalej</button>
                 </div>
             </div>
-
 
 
             <!-- STEP 3 -->
@@ -80,19 +89,30 @@
                 <c:forEach items="${institutions}" var="inst">
                 <div class="form-group form-group--checkbox">
                     <label>
-                        <input type="radio" name="institution.id" value="${inst.id}" />
+                        <input type="radio" name="institution.id"/>
                         <span class="checkbox radio"></span>
                         <span class="description">
-                  <div class="title">${inst.name}</div>
+                  <div id="test" class="title">${inst.name}</div>
                   <div class="subtitle">${inst.description}</div>
                 </span>
                     </label>
                 </div>
                 </c:forEach>
 
+                <script>
+                    function myFunction1() {
+                        if (document.querySelector('input[name="institution.id"]:checked')) {
+                            var test = document.getElementById("test").textContent
+                            document.getElementById("institution").innerHTML = test;
+                        }
+                    }
+                </script>
+
+
+
                 <div class="form-group form-group--buttons">
                     <button type="button" class="btn prev-step">Wstecz</button>
-                    <button type="button" class="btn next-step">Dalej</button>
+                    <button type="button" class="btn next-step"  onclick="myFunction1();myFunction()">Dalej</button>
                 </div>
             </div>
 
@@ -158,16 +178,20 @@
                         <ul>
                             <li>
                                 <span class="icon icon-bag"></span>
-                                <span class="summary--text"
-                                >4 worki ubrań w dobrym stanie dla dzieci</span
-                                >
+                                <span class="summary--text">
+
+                                    Liczba oddanych worków : <span id="quantityID"></span>
+
+                                </span>
                             </li>
 
                             <li>
                                 <span class="icon icon-hand"></span>
-                                <span class="summary--text"
-                                >Dla fundacji "Mam marzenie" w Warszawie</span
-                                >
+                                <span class="summary--text">
+
+                                    <span id="institution"></span>
+
+                                </span>
                             </li>
                         </ul>
                     </div>
@@ -200,6 +224,7 @@
                 </div>
             </div>
         </form:form>
+
     </div>
 </section>
 

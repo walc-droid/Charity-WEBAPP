@@ -3,6 +3,9 @@ package pl.coderslab.charity.entity;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
@@ -14,10 +17,13 @@ public class Donation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotNull(message = "Wybierz ilość!")
+    @Min(1)
     private Integer quantity;
 
     @ManyToMany
     @JoinTable(name = "donation_category")
+    @NotEmpty(message = "Wybierz kategorię!")
     private List<Category> categories;
 
     @ManyToOne
