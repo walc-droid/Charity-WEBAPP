@@ -69,7 +69,7 @@
                               function myFunction() {
                                   var quantityValue = document.querySelector('[name="quantity"]').value;
                                   document.getElementById("quantityID").innerHTML = quantityValue;
-                             }
+                              }
                         </script>
                     </label>
                 </div>
@@ -83,17 +83,17 @@
 
 
             <!-- STEP 3 -->
-            <div data-step="3">
+            <div data-step="3" id="step3">
                 <h3>Wybierz organizacje, której chcesz pomóc:</h3>
 
-                <c:forEach items="${institutions}" var="inst">
+                <c:forEach items="${institutions}" var="inst" varStatus="idNumber">
                 <div class="form-group form-group--checkbox">
                     <label>
-                        <input type="radio" name="institution.id"/>
+                        <input type="radio" id="radioTest" name="institution.id"/>
                         <span class="checkbox radio"></span>
                         <span class="description">
-                  <div id="test" class="title">${inst.name}</div>
-                  <div class="subtitle">${inst.description}</div>
+                  <div id="Z${idNumber.index}" class="title">${inst.name}</div>
+                  <div id="X${idNumber.index}" class="subtitle">${inst.description}</div>
                 </span>
                     </label>
                 </div>
@@ -101,9 +101,20 @@
 
                 <script>
                     function myFunction1() {
-                        if (document.querySelector('input[name="institution.id"]:checked')) {
-                            var test = document.getElementById("test").textContent
-                            document.getElementById("institution").innerHTML = test;
+
+                        var x = document.getElementById("step3");
+                        var input = x.getElementsByTagName("input");
+
+                        for (var i = 1; i < input.length; i++) {
+
+                            if (input[i].checked) {
+                                var name = document.getElementById("Z"+i).textContent;
+                                document.getElementById("institutionName").innerHTML = name;
+
+                                var description = document.getElementById("X"+i).textContent;
+                                document.getElementById("institutionDescription").innerHTML = description;
+
+                            }
                         }
                     }
                 </script>
@@ -112,7 +123,7 @@
 
                 <div class="form-group form-group--buttons">
                     <button type="button" class="btn prev-step">Wstecz</button>
-                    <button type="button" class="btn next-step"  onclick="myFunction1();myFunction()">Dalej</button>
+                    <button type="button" class="btn next-step" onclick="myFunction1()">Dalej</button>
                 </div>
             </div>
 
@@ -189,7 +200,7 @@
                                 <span class="icon icon-hand"></span>
                                 <span class="summary--text">
 
-                                    <span id="institution"></span>
+                                    <span id="institutionName"></span> : <span id="institutionDescription"></span>
 
                                 </span>
                             </li>
