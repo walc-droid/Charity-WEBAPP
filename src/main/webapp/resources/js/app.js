@@ -126,8 +126,6 @@ document.addEventListener("DOMContentLoaded", function() {
         btn.addEventListener("click", e => {
           e.preventDefault();
 
-
-
           this.currentStep++;
           this.updateForm();
         });
@@ -167,6 +165,18 @@ document.addEventListener("DOMContentLoaded", function() {
       this.$step.parentElement.hidden = this.currentStep >= 5;
 
       // TODO: get data from inputs and show them in summary
+
+      // const quantityValue = document.querySelector("#quantity");
+      // document.querySelector("#quantityID").innerHTML = quantityValue.value;
+      //
+      // let radioCheck = document.querySelector('input[name="institution"]:checked');
+      //
+      // let institutionName = radioCheck.parentElement.querySelector(".title").innerHTML
+      // let institutionDesc = radioCheck.parentElement.querySelector(".description").innerHTML
+      //
+      // document.getElementById("institutionName").innerText = institutionName;
+      // document.getElementById("institutionDesc").innerText = institutionDesc;
+
     }
 
   }
@@ -176,6 +186,5 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
 
-
-
 });
+

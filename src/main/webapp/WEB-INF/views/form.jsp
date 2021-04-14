@@ -4,6 +4,7 @@
            uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="input" uri="http://www.springframework.org/tags/form" %>
 
+
 <%@include file="header.jsp" %>
 
 <section class="form--steps">
@@ -40,7 +41,7 @@
                 <div class="form-group form-group--checkbox">
 
                     <label>
-
+                            <%--                        <form:checkbox path="categories" value="#{cat.id}"/>--%>
                         <input type="checkbox" name="categories" value="${cat.id}" />
                         <span class="checkbox"></span>
                         <span class="description">${cat.name}</span>
@@ -62,22 +63,22 @@
                 <div class="form-group form-group--inline">
                     <label>
                         Liczba 60l worków:
-                        <input type="number" name="quantity" step="1" min="1" />
+                        <input id="quantity" type="number" name="quantity" step="1" min="1" />
                         <form:errors path="quantity"/>
 
-                        <script>
-                              function myFunction() {
-                                  var quantityValue = document.querySelector('[name="quantity"]').value;
-                                  document.getElementById("quantityID").innerHTML = quantityValue;
-                              }
-                        </script>
+<%--                        <script>--%>
+<%--                              function myFunction() {--%>
+<%--                                  var quantityValue = document.querySelector('[name="quantity"]').value;--%>
+<%--                                  document.getElementById("quantityID").innerHTML = quantityValue;--%>
+<%--                              }--%>
+<%--                        </script>--%>
                     </label>
                 </div>
 
 
                 <div class="form-group form-group--buttons">
                     <button type="button" class="btn prev-step">Wstecz</button>
-                    <button type="button" class="btn next-step" onclick="myFunction()">Dalej</button>
+                    <button type="button" class="btn next-step" id="button2Next">Dalej</button>
                 </div>
             </div>
 
@@ -87,43 +88,42 @@
                 <h3>Wybierz organizacje, której chcesz pomóc:</h3>
 
                 <c:forEach items="${institutions}" var="inst" varStatus="idNumber">
-                <div class="form-group form-group--checkbox">
-                    <label>
-                        <input type="radio" id="radioTest" name="institution.id"/>
-                        <span class="checkbox radio"></span>
-                        <span class="description">
+                    <div class="form-group form-group--checkbox">
+                        <label>
+                                <%--<input type="radio" id="radioTest" name="institution" value="${inst.id}"/>--%>
+                            <form:radiobutton path="institution" value="${institution.id}"/>
+                            <span class="checkbox radio"></span>
+                            <span class="description">
                   <div id="Z${idNumber.index}" class="title">${inst.name}</div>
                   <div id="X${idNumber.index}" class="subtitle">${inst.description}</div>
                 </span>
-                    </label>
-                </div>
+                        </label>
+                    </div>
                 </c:forEach>
 
-                <script>
-                    function myFunction1() {
-
-                        var x = document.getElementById("step3");
-                        var input = x.getElementsByTagName("input");
-
-                        for (var i = 1; i < input.length; i++) {
-
-                            if (input[i].checked) {
-                                var name = document.getElementById("Z"+i).textContent;
-                                document.getElementById("institutionName").innerHTML = name;
-
-                                var description = document.getElementById("X"+i).textContent;
-                                document.getElementById("institutionDescription").innerHTML = description;
-
-                            }
-                        }
-                    }
-                </script>
-
-
+<%--                <script>--%>
+<%--                    // function myFunction1() {--%>
+<%--                    //--%>
+<%--                    //     var x = document.getElementById("step3");--%>
+<%--                    //     var input = x.getElementsByTagName("input");--%>
+<%--                    //--%>
+<%--                    //     for (var i = 1; i < input.length; i++) {--%>
+<%--                    //--%>
+<%--                    //         if (input[i].checked) {--%>
+<%--                    //             var name = document.getElementById("Z"+i).textContent;--%>
+<%--                    //             document.getElementById("institutionName").innerHTML = name;--%>
+<%--                    //--%>
+<%--                    //             var description = document.getElementById("X"+i).textContent;--%>
+<%--                    //             document.getElementById("institutionDescription").innerHTML = description;--%>
+<%--                    //--%>
+<%--                    //         }--%>
+<%--                    //     }--%>
+<%--                    // }--%>
+<%--                </script>--%>
 
                 <div class="form-group form-group--buttons">
                     <button type="button" class="btn prev-step">Wstecz</button>
-                    <button type="button" class="btn next-step" onclick="myFunction1()">Dalej</button>
+                    <button type="button" class="btn next-step">Dalej</button>
                 </div>
             </div>
 
@@ -175,7 +175,7 @@
                 </div>
                 <div class="form-group form-group--buttons">
                     <button type="button" class="btn prev-step">Wstecz</button>
-                    <button type="button" class="btn next-step">Dalej</button>
+                    <button type="button" class="btn next-step" id="button4">Dalej</button>
                 </div>
             </div>
 
@@ -191,7 +191,7 @@
                                 <span class="icon icon-bag"></span>
                                 <span class="summary--text">
 
-                                    Liczba oddanych worków : <span id="quantityID"></span>
+                                    Liczba oddanych worków : <span id="quantityValue"></span> kategorii :<span id="categoryList"></span>
 
                                 </span>
                             </li>
@@ -200,7 +200,7 @@
                                 <span class="icon icon-hand"></span>
                                 <span class="summary--text">
 
-                                    <span id="institutionName"></span> : <span id="institutionDescription"></span>
+                                    <span id="institutionName"></span> : <span id="institutionSubtitle"></span>
 
                                 </span>
                             </li>
@@ -211,19 +211,19 @@
                         <div class="form-section--column">
                             <h4>Adres odbioru:</h4>
                             <ul>
-                                <li>Prosta 51</li>
-                                <li>Warszawa</li>
-                                <li>99-098</li>
-                                <li>123 456 789</li>
+                                <li id="streetValue"></li>
+                                <li id="cityValue"></li>
+                                <li id="zipCodeValue"></li>
+                                <li id="phoneValue"></li>
                             </ul>
                         </div>
 
                         <div class="form-section--column">
                             <h4>Termin odbioru:</h4>
                             <ul>
-                                <li>13/12/2018</li>
-                                <li>15:40</li>
-                                <li>Brak uwag</li>
+                                <li id="pickUpDateValue"></li>
+                                <li id="pickUpTimeValue"></li>
+                                <li id="pickUpTimeComment"></li>
                             </ul>
                         </div>
                     </div>
@@ -239,6 +239,7 @@
     </div>
 </section>
 
+<script src="/<c:url value="resources/js/summary.js"/>"></script>
 
 
 <%@include file="footer.jsp" %>
