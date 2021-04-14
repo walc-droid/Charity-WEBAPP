@@ -49,7 +49,7 @@ public class DonationController {
 
 
         this.donationService.save(donation);
-        return "homePage";
+        return "form-confirmation";
     }
 
 
