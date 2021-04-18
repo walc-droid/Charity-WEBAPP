@@ -125,9 +125,8 @@ document.addEventListener("DOMContentLoaded", function() {
       this.$next.forEach(btn => {
         btn.addEventListener("click", e => {
           e.preventDefault();
-
-          this.currentStep++;
-          this.updateForm();
+            this.currentStep++;
+            this.updateForm();
         });
       });
 
@@ -166,9 +165,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
       // TODO: get data from inputs and show them in summary
 
-      // const quantityValue = document.querySelector("#quantity");
-      // document.querySelector("#quantityID").innerHTML = quantityValue.value;
-      //
+      // const quantity123 = document.querySelector("#quantity");
+      // document.querySelector("#quantityID").innerHTML = quantity123.value;
+
       // let radioCheck = document.querySelector('input[name="institution"]:checked');
       //
       // let institutionName = radioCheck.parentElement.querySelector(".title").innerHTML

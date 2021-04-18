@@ -10,14 +10,34 @@ function getCheckedCategories() {
     return arrayOfCategories;
 }
 
+
+//Institution
+
+function getCheckedInstitutionTitle() {
+    const checkedInstitution = document.querySelectorAll('input[name="institution"]:checked');
+    let arrayOfInstitutions = [];
+
+    for (let i = 0; i < checkedInstitution.length; i++) {
+        arrayOfInstitutions.push(checkedInstitution[i].nextElementSibling.nextElementSibling.firstElementChild.textContent)
+    }
+    return arrayOfInstitutions;
+}
+function getCheckedInstitutionSubtitle() {
+    const checkedInstitution = document.querySelectorAll('input[name="institution"]:checked');
+    let arrayOfInstitutions = [];
+
+    for (let i = 0; i < checkedInstitution.length; i++) {
+        arrayOfInstitutions.push(checkedInstitution[i].nextElementSibling.nextElementSibling.lastElementChild.textContent)
+    }
+    return arrayOfInstitutions;
+}
+
+
+
+
 //Quantity
 let quantityValue = document.querySelector('[name="quantity"]');
 
-
-//Institution
-let institutionCheck = document.querySelector('input[name="institution"]:checked');
-let institutionName = institutionCheck.parentElement.querySelector(".title");
-let institutionSubtitle = institutionCheck.parentElement.querySelector(".subtitle");
 
 //Street
 let street = document.querySelector('[name="street"]');
@@ -43,14 +63,15 @@ let pickUpComment = document.querySelector('[name="pickUpComment"]')
 
 
 //Button
+let buttonStep2 = document.querySelector("#button2");
 let buttonStep4 = document.querySelector("#button4");
 
 buttonStep4.addEventListener("click", () => {
 
     document.querySelector("#categoryList").innerHTML = getCheckedCategories();
     document.querySelector("#quantityValue").innerHTML = quantityValue.value;
-    document.querySelector("#institutionName").innerText = institutionName.innerHTML;
-    document.querySelector("#institutionSubtitle").innerText = institutionSubtitle.innerHTML;
+    document.querySelector("#institutionName").innerHTML = getCheckedInstitutionTitle();
+    document.querySelector("#institutionSubtitle").innerHTML = getCheckedInstitutionSubtitle();
     document.querySelector("#streetValue").innerHTML = street.value;
     document.querySelector("#cityValue").innerHTML = city.value;
     document.querySelector("#zipCodeValue").innerHTML = zipCode.value;
@@ -61,3 +82,20 @@ buttonStep4.addEventListener("click", () => {
 
 });
 
+
+// function quantityValidate(e) {
+//     let quantityValue = document.querySelector('[name="quantity"]').value;
+//     if (quantityValue > 100 || quantityValue == "") {
+//         this.text = "Niepoprawna wartość!";
+//         document.querySelector("#testValidate").innerHTML = this.text;
+//         e.preventDefault();
+//     }
+//     return false;
+// }
+//
+// buttonStep2.addEventListener("click", (e) => {
+//
+//     let result =  quantityValidate(e);
+//     return result;
+//
+// });

@@ -65,6 +65,7 @@
                         Liczba 60l worków:
                         <input id="quantity" type="number" name="quantity" step="1" min="1" />
                         <form:errors path="quantity"/>
+                        <span id="testValidate"/>
 
 <%--                        <script>--%>
 <%--                              function myFunction() {--%>
@@ -78,7 +79,7 @@
 
                 <div class="form-group form-group--buttons">
                     <button type="button" class="btn prev-step">Wstecz</button>
-                    <button type="button" class="btn next-step" id="button2Next">Dalej</button>
+                    <button type="button" class="btn next-step" id="button2">Dalej</button>
                 </div>
             </div>
 
@@ -90,8 +91,8 @@
                 <c:forEach items="${institutions}" var="inst" varStatus="idNumber">
                     <div class="form-group form-group--checkbox">
                         <label>
-                                <%--<input type="radio" id="radioTest" name="institution" value="${inst.id}"/>--%>
-                            <form:radiobutton path="institution" value="${institution.id}"/>
+<%--                            <input type="radio" id="radioTest" name="institution" value="${inst.id}"/>--%>
+                            <form:radiobutton path="institution" value="${inst.id}"/>
                             <span class="checkbox radio"></span>
                             <span class="description">
                   <div id="Z${idNumber.index}" class="title">${inst.name}</div>
@@ -119,7 +120,7 @@
 <%--                    //         }--%>
 <%--                    //     }--%>
 <%--                    // }--%>
-<%--                </script>--%>
+<%--&lt;%&ndash;                </script>&ndash;%&gt;--%>
 
                 <div class="form-group form-group--buttons">
                     <button type="button" class="btn prev-step">Wstecz</button>
@@ -191,7 +192,7 @@
                                 <span class="icon icon-bag"></span>
                                 <span class="summary--text">
 
-                                    Liczba oddanych worków : <span id="quantityValue"></span> kategorii :<span id="categoryList"></span>
+                                    Liczba oddanych worków : <span id="quantityValue"></span></span> kategorii : <span id="categoryList"></span>
 
                                 </span>
                             </li>
