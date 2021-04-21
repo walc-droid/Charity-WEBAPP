@@ -51,8 +51,9 @@
                 </div>
                 </c:forEach>
                 <form:errors path="categories"/>
+                <span id="validateCategory"></span>
                 <div class="form-group form-group--buttons">
-                    <button type="button" class="btn next-step">Dalej</button>
+                    <button type="button" class="btn next-step" id="button1">Dalej</button>
                 </div>
             </div>
 
@@ -78,7 +79,7 @@
 
 
                 <div class="form-group form-group--buttons">
-                    <button type="button" class="btn prev-step">Wstecz</button>
+                    <button type="button" class="btn prev-step" id="button2prev" >Wstecz</button>
                     <button type="button" class="btn next-step" id="button2">Dalej</button>
                 </div>
             </div>
@@ -101,7 +102,7 @@
                         </label>
                     </div>
                 </c:forEach>
-
+                <span id="validateInstitution"></span>
 <%--                <script>--%>
 <%--                    // function myFunction1() {--%>
 <%--                    //--%>
@@ -123,8 +124,8 @@
 <%--&lt;%&ndash;                </script>&ndash;%&gt;--%>
 
                 <div class="form-group form-group--buttons">
-                    <button type="button" class="btn prev-step">Wstecz</button>
-                    <button type="button" class="btn next-step">Dalej</button>
+                    <button type="button" class="btn prev-step" id="button3prev">Wstecz</button>
+                    <button type="button" class="btn next-step" id="button3">Dalej</button>
                 </div>
             </div>
 
@@ -175,7 +176,7 @@
                     </div>
                 </div>
                 <div class="form-group form-group--buttons">
-                    <button type="button" class="btn prev-step">Wstecz</button>
+                    <button type="button" class="btn prev-step" id="button4prev">Wstecz</button>
                     <button type="button" class="btn next-step" id="button4">Dalej</button>
                 </div>
             </div>

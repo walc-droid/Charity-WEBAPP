@@ -152,6 +152,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
       // TODO: Validation
 
+
       this.slides.forEach(slide => {
         slide.classList.remove("active");
 
