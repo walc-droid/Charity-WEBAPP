@@ -138,22 +138,25 @@
                         <h4>Adres odbioru</h4>
                         <div class="form-group form-group--inline">
                             <label> Ulica <input type="text" name="street" /> </label>
+                            <span id="validateStreet"/>
                         </div>
 
                         <div class="form-group form-group--inline">
                             <label> Miasto <input type="text" name="city" /> </label>
+                            <span id="validateCity"/>
                         </div>
 
                         <div class="form-group form-group--inline">
                             <label>
-                                Kod pocztowy <input type="text" name="zipCode" />
-                            </label>
+                                Kod pocztowy <input type="text" name="zipCode" /> </label>
+                            <span id="validateZipCode"/>
                         </div>
 
                         <div class="form-group form-group--inline">
                             <label>
                                 Numer telefonu <input type="phone" name="phone" />
                             </label>
+                            <span id="validatePhone"/>
                         </div>
                     </div>
 

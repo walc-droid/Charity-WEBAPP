@@ -138,16 +138,54 @@ buttonStep4.addEventListener("click", () => {
     document.querySelector("#pickUpTimeValue").innerHTML = pickUpTime.value;
     document.querySelector("#pickUpTimeComment").innerHTML = pickUpComment.value;
 
+
+    if (street.value === "") {
+        this.text = "Ulica nie może być pusta!";
+        document.querySelector("#validateStreet").innerHTML = this.text;
+        street.focus();
+        buttonStep4prev.click();
+        return false;
+    } else {
+        this.text = "";
+        document.querySelector("#validateStreet").innerHTML = this.text;
+    }
+
+    if (city.value === "") {
+        this.text = "Miasto nie może być puste!";
+        document.querySelector("#validateCity").innerHTML = this.text;
+        city.focus();
+        buttonStep4prev.click();
+        return false;
+    } else {
+        this.text = "";
+        document.querySelector("#validateCity").innerHTML = this.text;
+    }
+
+    if (zipCode.value === "") {
+        this.text = "Kod pocztowy nie może być pusty!";
+        document.querySelector("#validateZipCode").innerHTML = this.text;
+        zipCode.focus();
+        buttonStep4prev.click();
+        return false;
+    } else {
+        this.text = "";
+        document.querySelector("#validateZipCode").innerHTML = this.text;
+    }
+
+    if (phone.value === "") {
+        this.text = "Podaj numer telefonu!";
+        document.querySelector("#validatePhone").innerHTML = this.text;
+        phone.focus();
+        buttonStep4prev.click();
+        return false;
+    } else {
+        this.text = "";
+        document.querySelector("#validatePhone").innerHTML = this.text;
+    }
+
+
 });
 
 
-function quantityValidate() {
-    let quantityValue = document.querySelector('[name="quantity"]').value;
-    if (quantityValue > 100 || quantityValue == "") {
-        this.text = "Niepoprawna wartość!";
-        document.querySelector("#testValidate").innerHTML = this.text;
-        return false;
-    }
-    return true;
-}
+
 
