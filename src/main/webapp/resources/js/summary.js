@@ -46,7 +46,9 @@ let city = document.querySelector('[name="city"]');
 let zipCode = document.querySelector('[name="zipCode"]');
 
 //phone
+
 let phone = document.querySelector('[name="phone"]');
+
 
 //pickUpDate
 let pickUpDate = document.querySelector('[name="pickUpDate"]')
@@ -161,8 +163,39 @@ buttonStep4.addEventListener("click", () => {
         document.querySelector("#validateCity").innerHTML = this.text;
     }
 
-    if (zipCode.value === "") {
-        this.text = "Kod pocztowy nie może być pusty!";
+
+
+    testZipCoDe(zipCode);
+    testPhone(phone);
+
+});
+
+
+function testPhone (phone) {
+
+    const phoneRegex = /[5-9][0-9]{8}$/;
+    let validatePhone = phoneRegex.test(phone.value);
+
+    if (!validatePhone) {
+        this.text = "Podaj poprawny numer telefonu!";
+        document.querySelector("#validatePhone").innerHTML = this.text;
+        phone.focus();
+        buttonStep4prev.click();
+        return false;
+    } else {
+        this.text = "";
+        document.querySelector("#validatePhone").innerHTML = this.text;
+    }
+}
+
+
+function testZipCoDe (zipCode) {
+
+    const zipCodeRegex = /[0-9][0-9]-[0-9][0-9][0-9]/;
+    let validateZipCode = zipCodeRegex.test(zipCode.value);
+
+    if(!validateZipCode) {
+        this.text = "Kod pocztowy jest niepoprawny!";
         document.querySelector("#validateZipCode").innerHTML = this.text;
         zipCode.focus();
         buttonStep4prev.click();
@@ -172,19 +205,8 @@ buttonStep4.addEventListener("click", () => {
         document.querySelector("#validateZipCode").innerHTML = this.text;
     }
 
-    if (phone.value === "") {
-        this.text = "Podaj numer telefonu!";
-        document.querySelector("#validatePhone").innerHTML = this.text;
-        phone.focus();
-        buttonStep4prev.click();
-        return false;
-    } else {
-        this.text = "";
-        document.querySelector("#validatePhone").innerHTML = this.text;
-    }
+}
 
-
-});
 
 
 
