@@ -167,6 +167,7 @@ buttonStep4.addEventListener("click", () => {
 
     testZipCoDe(zipCode);
     testPhone(phone);
+    testDate(pickUpDate)
 
 });
 
@@ -208,6 +209,20 @@ function testZipCoDe (zipCode) {
 }
 
 
+function testDate (dateValue) {
+
+    if (new Date(dateValue.value) < new Date()) {
+        this.text = "Wybierz poprawną datę!";
+        document.querySelector("#validateDate").innerHTML = this.text;
+        dateValue.focus();
+        buttonStep4prev.click();
+        return false;
+    } else {
+        this.text = "";
+        document.querySelector("#validateDate").innerHTML = this.text;
+    }
+
+}
 
 
 

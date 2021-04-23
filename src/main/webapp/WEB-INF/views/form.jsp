@@ -164,6 +164,7 @@
                         <h4>Termin odbioru</h4>
                         <div class="form-group form-group--inline">
                             <label> Data <input type="date" name="pickUpDate" /> </label>
+                            <span id="validateDate"/>
                         </div>
 
                         <div class="form-group form-group--inline">
