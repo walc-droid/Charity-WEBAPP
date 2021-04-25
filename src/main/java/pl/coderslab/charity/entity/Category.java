@@ -1,6 +1,7 @@
 package pl.coderslab.charity.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "category")
@@ -9,6 +10,7 @@ public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotBlank(message = "Podaj nazwę kategorii!")
     private String name;
 
 

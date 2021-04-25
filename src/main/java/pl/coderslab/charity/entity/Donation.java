@@ -3,9 +3,7 @@ package pl.coderslab.charity.entity;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
@@ -27,15 +25,22 @@ public class Donation {
     private List<Category> categories;
 
     @ManyToOne
+    @NotEmpty(message = "Wybierz instytucję!")
     private Institution institution;
 
+    @NotBlank(message = "Podaj ulice!")
     private String street;
+    @NotBlank(message = "Podaj miasto!")
     private String city;
+    @NotBlank(message = "Podaj kod pocztowy!")
     private String zipCode;
+    @Size(min = 9)
     private String phone;
 
+    @NotNull(message = "Podaj date!")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate pickUpDate;
+    @NotNull(message = "Podaj godzinę!")
     private LocalTime pickUpTime;
     private String pickUpComment;
 

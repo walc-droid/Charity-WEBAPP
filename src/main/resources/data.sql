@@ -10,9 +10,13 @@ INSERT INTO Institution (id,name,description) VALUES (2,'Dla dzieci','Pomoc osob
 INSERT INTO Institution (id,name,description) VALUES (3,'A kogo','Pomoc wybudzaniu dzieci ze śpiączki');
 INSERT INTO Institution (id,name,description) VALUES (4,'Bez domu','Pomoc dla osób nie posiadających miejsca zamieszkania');
 
-INSERT INTO Donation (id,quantity) VALUES (1,15);
-INSERT INTO Donation (id,quantity) VALUES (2,3);
-INSERT INTO Donation (id,quantity) VALUES (3,6);
+INSERT INTO donation
+VALUES (1, 'Kraków','733215099' ,'Odebrać jak najszybciej!', '2021-05-11', '08:00', 6, 'Jagiełły 60B',
+        '32-560', 1),
+       (2, 'Warszawa', '763123456','Zadzwoń przed 12.', '2021-01-29', '09:15', 3, 'Akacjowa 11',
+        '32-111', 2),
+       (3, 'Oświęcim', '677543012','Uwaga na wagę paczki!', '2021-05-04', '08:00', 5, 'Podwawelska 69',
+        '32-600', 3);
 
 
 

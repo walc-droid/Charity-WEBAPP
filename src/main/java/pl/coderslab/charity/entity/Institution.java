@@ -2,6 +2,9 @@ package pl.coderslab.charity.entity;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "institution")
@@ -10,7 +13,9 @@ public class Institution {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotBlank(message = "Podaj nazwę instytucji!")
     private String name;
+    @Size(max = 255, message = "Opis może posiadać max. 255 znaków!")
     private String description;
 
     public Long getId() {
