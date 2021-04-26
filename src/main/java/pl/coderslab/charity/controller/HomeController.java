@@ -1,4 +1,4 @@
-package pl.coderslab.charity;
+package pl.coderslab.charity.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,6 +12,7 @@ import pl.coderslab.charity.repository.InstitutionRepository;
 import pl.coderslab.charity.service.CategoryService;
 import pl.coderslab.charity.service.DonationService;
 import pl.coderslab.charity.service.InstitutionService;
+import pl.coderslab.charity.service.UserService;
 
 import java.util.List;
 
@@ -19,10 +20,18 @@ import java.util.List;
 @Controller
 public class HomeController {
 
-    @Autowired
-    private InstitutionService institutionService;
-    @Autowired
-    private DonationService donationService;
+
+    private final InstitutionService institutionService;
+
+    private final DonationService donationService;
+
+    private final UserService userService;
+
+    public HomeController(InstitutionService institutionService, DonationService donationService, UserService userService) {
+        this.institutionService = institutionService;
+        this.donationService = donationService;
+        this.userService = userService;
+    }
 
     @RequestMapping("/")
     public String homeAction(Model model) {

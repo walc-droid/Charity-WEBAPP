@@ -5,12 +5,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+
 import pl.coderslab.charity.entity.User;
 import pl.coderslab.charity.service.UserService;
 
 @Controller
-@RequestMapping("/register")
 public class UserController {
 
     private final UserService userService;
@@ -20,13 +19,13 @@ public class UserController {
     }
 
 
-    @GetMapping("/user")
-    public String addUser(Model model) {
+    @GetMapping("/register")
+    public String add(Model model) {
         model.addAttribute("user" , new User());
         return "register";
     }
 
-    @PostMapping("/user")
+    @PostMapping("/register")
     public String addUserPost(User user) {
         this.userService.save(user);
         return "homePage";

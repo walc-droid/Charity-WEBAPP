@@ -25,7 +25,7 @@ public class Donation {
     private List<Category> categories;
 
     @ManyToOne
-    @NotEmpty(message = "Wybierz instytucję!")
+    @NotNull(message = "Wybierz instytucję!")
     private Institution institution;
 
     @NotBlank(message = "Podaj ulice!")

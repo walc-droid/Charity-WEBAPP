@@ -10,17 +10,29 @@
 
 <section class="login-page">
     <h2>Załóż konto</h2>
-    <form>
-        <div class="form-group">
-            <input type="email" name="email" placeholder="Email" />
+    <form method="post">
+        <div class="form-section form-section--columns">
+            <div class="form-section--column">
+                <div class="form-group form-group--inline ">
+                    <label>Login: <input type="text" name="login"/> </label>
+                </div>
+                <div class="form-group form-group--inline">
+                    <label>Imię: <input type="text" name="name"/> </label>
+                </div>
+                <div class="form-group form-group--inline">
+                    <label>Nazwisko: <input type="text" name="lastName"/></label>
+                </div>
+                <div class="form-group form-group--inline">
+                    <label>E-mail: <input type="email" name="email"/></label>
+                </div>
+                <div class="form-group form-group--inline">
+                    <label>Hasło: <input type="password" name="password"/></label>
+                </div>
+                <div class="form-group form-group--inline">
+                    <label>Potwierdz hasło: <input type="password" name="passwordConfirm"/></label>
+                </div>
+            </div>
         </div>
-        <div class="form-group">
-            <input type="password" name="password" placeholder="Hasło" />
-        </div>
-        <div class="form-group">
-            <input type="password" name="password2" placeholder="Powtórz hasło" />
-        </div>
-
         <div class="form-group form-group--buttons">
             <a href="login.html" class="btn btn--without-border">Zaloguj się</a>
             <button class="btn" type="submit">Załóż konto</button>

@@ -1,9 +1,7 @@
 package pl.coderslab.charity.entity;
 
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -13,20 +11,19 @@ import javax.validation.constraints.Size;
 public class User {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotBlank(message = "Podaj imię!")
-    @Size(min = 3,max = 12)
+
+    @Size(min = 3, max = 12)
     private String name;
-    @NotBlank(message = "Podaj nazwisko!")
     @Size(min = 3, max = 12)
     private String lastName;
-
-    @NotBlank(message = "Podaj login!")
     @Size(min = 3, max = 12)
     private String login;
     @Email
     private String email;
     private String password;
+    private String passwordConfirm;
 
 
     public Long getId() {
@@ -80,6 +77,15 @@ public class User {
 
     public User setPassword(String password) {
         this.password = password;
+        return this;
+    }
+
+    public String getPasswordConfirm() {
+        return passwordConfirm;
+    }
+
+    public User setPasswordConfirm(String passwordConfirm) {
+        this.passwordConfirm = passwordConfirm;
         return this;
     }
 }
