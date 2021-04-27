@@ -3,8 +3,8 @@ package pl.coderslab.charity.entity;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.util.Set;
 
 @Entity
 @Table(name = "User")
@@ -14,16 +14,24 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Size(min = 3, max = 12)
-    private String name;
-    @Size(min = 3, max = 12)
+//    @Size(min = 3, max = 12)
+    private String firstName;
+//    @Size(min = 3, max = 12)
     private String lastName;
-    @Size(min = 3, max = 12)
+//    @Size(min = 3, max = 12)
     private String login;
-    @Email
+//    @Email
     private String email;
     private String password;
     private String passwordConfirm;
+    private int enabled;
+
+
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(name = "user_role"
+            , joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles;
 
 
     public Long getId() {
@@ -35,12 +43,12 @@ public class User {
         return this;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public User setName(String name) {
-        this.name = name;
+    public User setFirstName(String firstName) {
+        this.firstName = firstName;
         return this;
     }
 
@@ -86,6 +94,24 @@ public class User {
 
     public User setPasswordConfirm(String passwordConfirm) {
         this.passwordConfirm = passwordConfirm;
+        return this;
+    }
+
+    public int getEnabled() {
+        return enabled;
+    }
+
+    public User setEnabled(int enabled) {
+        this.enabled = enabled;
+        return this;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public User setRoles(Set<Role> roles) {
+        this.roles = roles;
         return this;
     }
 }

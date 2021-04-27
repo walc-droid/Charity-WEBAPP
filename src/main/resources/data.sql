@@ -19,4 +19,4 @@ VALUES (1, 'Kraków','733215099' ,'Odebrać jak najszybciej!', '2021-05-11', '08
         '32-600', 3);
 
 
-
+INSERT INTO `role` (`id`,`name`) VALUES (NULL,'ROLE_USER');

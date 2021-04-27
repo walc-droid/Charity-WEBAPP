@@ -12,12 +12,12 @@ import pl.coderslab.charity.service.UserService;
 @Controller
 public class UserController {
 
+
     private final UserService userService;
 
     public UserController(UserService userService) {
         this.userService = userService;
     }
-
 
     @GetMapping("/register")
     public String add(Model model) {
@@ -27,7 +27,15 @@ public class UserController {
 
     @PostMapping("/register")
     public String addUserPost(User user) {
-        this.userService.save(user);
+
+//        if(!user.getPassword().equals(user.getPasswordConfirm())) {
+//
+//        }
+
+
+        this.userService.saveUser(user);
+
+
         return "homePage";
     }
 }
