@@ -4,13 +4,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import pl.coderslab.charity.entity.User;
 
 import java.util.HashSet;
 import java.util.Set;
 
-public class SpringDataUserDetailsService implements UserDetailsService{
+public class SpringDataUserDetailsService implements UserDetailsService {
 
     private UserService userService;
 
@@ -19,15 +20,18 @@ public class SpringDataUserDetailsService implements UserDetailsService{
         this.userService = userService;
     }
 
-
     @Override
-    public UserDetails loadUserByLogin(String login) throws UsernameNotFoundException {
-        User user = userService.findByLogin(login);
-        if(user == null) {
-            throw new UsernameNotFoundException(login);
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        User user = userService.findByUsername(username);
+
+        if (user == null || user.getEnabled()==0) {
+            throw new UsernameNotFoundException(username);
         }
-        Set<GrantedAuthority> grantedAuthories = new HashSet<>();
-        user.getRoles().forEach(r -> grantedAuthories.add(new SimpleGrantedAuthority(r.getName())));
-        return new org.springframework.security.core.userdetails.User(user.getLogin(), user.getPassword(),grantedAuthories);
+
+        Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
+        user.getRoles().forEach(role -> grantedAuthorities.add(new SimpleGrantedAuthority((role.getName()))));
+
+        return new CurrentUser(user.getFirstName(), user.getLastName(), user.getUsername(), user.getEmail(),
+                user.getPassword(), grantedAuthorities, user);
     }
 }

@@ -8,9 +8,11 @@ import pl.coderslab.charity.entity.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
-    User findByLogin(String login);
+    User findByUsername(String username);
+
     User findByEmail(String email);
 
-    boolean existsUserByEmail(String email);
-    boolean existsByLogin (String login);
+    boolean existsByUsername(String name);
+
+    boolean existsByEmail(String email);
 }

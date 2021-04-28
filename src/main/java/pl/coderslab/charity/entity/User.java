@@ -19,7 +19,7 @@ public class User {
 //    @Size(min = 3, max = 12)
     private String lastName;
 //    @Size(min = 3, max = 12)
-    private String login;
+    private String username;
 //    @Email
     private String email;
     private String password;
@@ -61,12 +61,12 @@ public class User {
         return this;
     }
 
-    public String getLogin() {
-        return login;
+    public String getUsername() {
+        return username;
     }
 
-    public User setLogin(String login) {
-        this.login = login;
+    public User setUsername(String username) {
+        this.username = username;
         return this;
     }
 
@@ -113,5 +113,20 @@ public class User {
     public User setRoles(Set<Role> roles) {
         this.roles = roles;
         return this;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", login='" + username + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", passwordConfirm='" + passwordConfirm + '\'' +
+                ", enabled=" + enabled +
+                ", roles=" + roles +
+                '}';
     }
 }

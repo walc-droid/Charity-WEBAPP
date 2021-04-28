@@ -12,12 +12,12 @@
     <h2>Załóż konto</h2>
 
 
-    <form:form action="" method="post" modelAttribute="user">
+    <form:form action="/register" method="post" modelAttribute="user">
         <div class="form-section form-section--columns">
             <div class="form-section--column">
 
                 <div class="form-group form-group--inline">
-                    <form:label path="login">Login: <form:input type="text" name="login" path="login"/></form:label>
+                    <form:label path="username">Login: <form:input type="text" name="username" path="username"/></form:label>
                 </div>
 
                 <div class="form-group form-group--inline">
