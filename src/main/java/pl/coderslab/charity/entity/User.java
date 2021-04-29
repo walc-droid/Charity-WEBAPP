@@ -14,13 +14,13 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-//    @Size(min = 3, max = 12)
+    @Size(min = 3, max = 12)
     private String firstName;
-//    @Size(min = 3, max = 12)
+    @Size(min = 3, max = 12)
     private String lastName;
-//    @Size(min = 3, max = 12)
+    @Size(min = 3, max = 12)
     private String username;
-//    @Email
+    @Email
     private String email;
     private String password;
     private String passwordConfirm;

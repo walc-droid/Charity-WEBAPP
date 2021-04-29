@@ -4,6 +4,7 @@ package pl.coderslab.charity.controller;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -11,6 +12,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import pl.coderslab.charity.entity.User;
 import pl.coderslab.charity.service.CurrentUser;
 import pl.coderslab.charity.service.UserService;
+
+import javax.validation.Valid;
 
 @Controller
 public class UserController {
@@ -29,17 +32,23 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public String addUserPost(User user) {
+    public String addUserPost(@Valid User user, BindingResult bindingResult) {
 
-//        if(!user.getPassword().equals(user.getPasswordConfirm())) {
-//
-//        }
+        if(!user.getPassword().equals(user.getPasswordConfirm())) {
 
+            bindingResult.rejectValue("passwordConfirm","error.user","test");
+
+        }
+
+
+        if(bindingResult.hasErrors()) {
+            return "register";
+        }
 
         this.userService.saveUser(user);
 
 
-        return "homePage";
+        return "redirect:/login";
     }
 
     @GetMapping("/createAdmin")

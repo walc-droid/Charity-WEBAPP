@@ -9,16 +9,20 @@
 
 <section class="login-page">
     <h2>Zaloguj się</h2>
-<%--    <c:if test="${param.error ne null}">--%>
-<%--        <div style="color: red">Invalid username or password.</div>--%>
-<%--    </c:if>--%>
+        <c:if test="${param.error ne null}">
+            <div style="color: red;font-size: large">Niepoprawny login lub hasło!</div>
+        </c:if>
     <form method="post" action="/login">
-        <div class="form-group">
-            <input type="text" name="username" placeholder="Nazwa użytkownika" path="username"/>
-        </div>
-        <div class="form-group">
-            <input type="password" name="password" placeholder="Hasło" path="password"/>
-            <a href="#" class="btn btn--small btn--without-border reset-password">Przypomnij hasło</a>
+        <div class="form-section form-section--columns">
+            <div class="form-section--column">
+                <div class="form-group form-group--inline">
+                    <label>Login: <input type="text" name="username" path="username"/></label>
+                </div>
+                <div class="form-group form-group--inline">
+                    <label>Hasło: <input type="password" name="password" path="password"/></label>
+                    <a href="#" class="btn btn--small btn--without-border reset-password">Przypomnij hasło</a>
+                </div>
+            </div>
         </div>
         <div class="form-group form-group--buttons">
             <a href="/register" class="btn btn--without-border">Załóż konto</a>

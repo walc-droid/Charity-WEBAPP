@@ -18,6 +18,7 @@
 
                 <div class="form-group form-group--inline">
                     <form:label path="username">Login: <form:input type="text" name="username" path="username"/></form:label>
+                    <form:errors cssStyle="color: red;font-size: large" path="username"></form:errors>
                 </div>
 
                 <div class="form-group form-group--inline">
@@ -34,6 +35,7 @@
 
                 <div class="form-group form-group--inline">
                     <form:label path="password">Hasło: <form:input type="password" name="password" path="password"/></form:label>
+
                 </div>
                 <div class="form-group form-group--inline">
                     <form:label path="passwordConfirm">Powtórz hasło: <form:input type="password" name="passwordConfirm" path="passwordConfirm"/></form:label>
