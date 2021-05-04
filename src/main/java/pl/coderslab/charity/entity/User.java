@@ -14,11 +14,11 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Size(min = 3, max = 12)
+    @Size(min = 3, max = 12, message = "Imię musi posiadać od 3 do 12 znaków!")
     private String firstName;
-    @Size(min = 3, max = 12)
+    @Size(min = 3, max = 12, message = "Nazwisko musi posiadać od 3 do 12 znaków!")
     private String lastName;
-    @Size(min = 3, max = 12)
+    @Size(min = 3, max = 12, message = "Login musi posiadać od 3 do 12 znaków!")
     private String username;
     @Email
     private String email;

@@ -1,16 +1,15 @@
 package pl.coderslab.charity.controller;
 
 
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import org.springframework.web.bind.annotation.ResponseBody;
+
 import pl.coderslab.charity.entity.User;
-import pl.coderslab.charity.service.CurrentUser;
 import pl.coderslab.charity.service.UserService;
 
 import javax.validation.Valid;
@@ -35,11 +34,20 @@ public class UserController {
     public String addUserPost(@Valid User user, BindingResult bindingResult) {
 
         if(!user.getPassword().equals(user.getPasswordConfirm())) {
-
-            bindingResult.rejectValue("passwordConfirm","error.user","test");
-
+            bindingResult.rejectValue("passwordConfirm","error.user","Hasło oraz potwierdzenie hasła nie są zgodne!");
+            bindingResult.rejectValue("password","error.user","Hasło oraz potwierdzenie hasła nie są zgodne!");
         }
 
+        boolean checkIfUserExist = userService.existsByName(user.getUsername());
+        boolean checkIfEmailWasUsed = userService.existsByEmail(user.getEmail());
+
+        if(checkIfUserExist) {
+            bindingResult.rejectValue("username","error.user","Login jest zajęty!");
+        }
+
+        if(checkIfEmailWasUsed) {
+            bindingResult.rejectValue("email","error.user","Adres email jest zajęty!");
+        }
 
         if(bindingResult.hasErrors()) {
             return "register";
@@ -47,29 +55,7 @@ public class UserController {
 
         this.userService.saveUser(user);
 
-
         return "redirect:/login";
     }
-
-    @GetMapping("/createAdmin")
-    @ResponseBody
-    public String createUser() {
-        User user = new User();
-        user.setFirstName("admin");
-        user.setLastName("admin");
-        user.setUsername("admin");
-        user.setEmail("admin@gmail.com");
-        user.setPassword("admin");
-        userService.saveUser(user);
-        return "admin";
-    }
-
-    @GetMapping("/logged")
-    @ResponseBody
-    public String admin(@AuthenticationPrincipal CurrentUser customUser) {
-        User entityUser = customUser.getUser();
-        return "Test " + entityUser.getUsername() + " " + entityUser.getPassword();
-    }
-
 
 }

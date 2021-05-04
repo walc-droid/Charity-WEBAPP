@@ -18,27 +18,31 @@
 
                 <div class="form-group form-group--inline">
                     <form:label path="username">Login: <form:input type="text" name="username" path="username"/></form:label>
-                    <form:errors cssStyle="color: red;font-size: large" path="username"></form:errors>
+                    <form:errors path="username" cssStyle="color: red;font-size: large"/>
                 </div>
 
                 <div class="form-group form-group--inline">
                     <form:label path="email">E-mail <form:input type="email" name="email" path="email"/></form:label>
+                    <form:errors path="email" cssStyle="color: red;font-size: large"/>
                 </div>
 
                 <div class="form-group form-group--inline">
                     <form:label path="firstName">Imię: <form:input type="text" name="firstName" path="firstName"/></form:label>
+                    <form:errors path="firstName" cssStyle="color: red;font-size: large"/>
                 </div>
 
                 <div class="form-group form-group--inline">
                     <form:label path="lastName">Nazwisko: <form:input type="text" name="lastName" path="lastName"/></form:label>
+                    <form:errors path="lastName" cssStyle="color: red;font-size: large"/>
                 </div>
 
                 <div class="form-group form-group--inline">
                     <form:label path="password">Hasło: <form:input type="password" name="password" path="password"/></form:label>
-
+                    <form:errors path="password" cssStyle="color: red;font-size: large"/>
                 </div>
                 <div class="form-group form-group--inline">
                     <form:label path="passwordConfirm">Powtórz hasło: <form:input type="password" name="passwordConfirm" path="passwordConfirm"/></form:label>
+                    <form:errors path="passwordConfirm" cssStyle="color: red;font-size: large"/>
                 </div>
             </div>
         </div>
