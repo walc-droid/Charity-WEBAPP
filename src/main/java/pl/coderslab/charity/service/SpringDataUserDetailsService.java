@@ -8,8 +8,10 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import pl.coderslab.charity.entity.User;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class SpringDataUserDetailsService implements UserDetailsService {
 
@@ -30,6 +32,8 @@ public class SpringDataUserDetailsService implements UserDetailsService {
 
         Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
         user.getRoles().forEach(role -> grantedAuthorities.add(new SimpleGrantedAuthority((role.getName()))));
+
+
 
         return new CurrentUser(user.getFirstName(), user.getLastName(), user.getUsername(), user.getEmail(),
                 user.getPassword(), grantedAuthorities, user);
