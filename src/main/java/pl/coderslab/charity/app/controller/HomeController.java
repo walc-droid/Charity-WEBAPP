@@ -8,7 +8,7 @@ import pl.coderslab.charity.app.donation.Donation;
 import pl.coderslab.charity.app.institution.Institution;
 import pl.coderslab.charity.app.donation.DonationService;
 import pl.coderslab.charity.app.institution.InstitutionService;
-import pl.coderslab.charity.app.user.UserService;
+import pl.coderslab.charity.app.user.AppUserService;
 
 import java.util.List;
 
@@ -20,13 +20,13 @@ public class HomeController {
     private final InstitutionService institutionService;
 
     private final DonationService donationService;
+    private final AppUserService appUserService;
 
-    private final UserService userService;
 
-    public HomeController(InstitutionService institutionService, DonationService donationService, UserService userService) {
+    public HomeController(InstitutionService institutionService, DonationService donationService, AppUserService appUserService) {
         this.institutionService = institutionService;
         this.donationService = donationService;
-        this.userService = userService;
+        this.appUserService = appUserService;
     }
 
     @RequestMapping("/")

@@ -19,6 +19,6 @@ VALUES (NULL , 'Kraków','733215099' ,'Odebrać jak najszybciej!', '2021-05-11',
         '32-600', 3);
 
 
-INSERT INTO `role` (`id`,`name`) VALUES (NULL,'ROLE_USER');
-INSERT INTO `user` (`id`,`username`,`password`,`enabled`,`first_name`,`last_name`,`email`) VALUES (1 ,'test','test',1,'test','test','test');
-INSERT INTO `user_role`(`user_id`,`role_id`) VALUES (1,1);
+-- INSERT INTO `role` (`id`,`name`) VALUES (NULL,'ROLE_USER');
+-- INSERT INTO `user` (`id`,`username`,`password`,`enabled`,`first_name`,`last_name`,`email`) VALUES (1 ,'test','test',1,'test','test','test');
+-- INSERT INTO `user_role`(`user_id`,`role_id`) VALUES (1,1);

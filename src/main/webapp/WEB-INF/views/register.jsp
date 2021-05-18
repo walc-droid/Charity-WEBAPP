@@ -12,6 +12,7 @@
     <h2>Załóż konto</h2>
 
 
+    <%--@elvariable id="user" type="java"--%>
     <form:form action="/register" method="post" modelAttribute="user">
         <div class="form-section form-section--columns">
             <div class="form-section--column">
@@ -51,7 +52,7 @@
         <div class="form-group form-group--buttons">
             <a href="/login" class="btn btn--without-border">Zaloguj się</a>
             <form:button class="btn" type="submit">Załóż konto</form:button>
-            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+<%--            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>--%>
         </div>
     </form:form>
 

@@ -9,9 +9,9 @@
 
 <section class="login-page">
     <h2>Zaloguj się</h2>
-<%--        <c:if test="${param.error ne null}">--%>
-<%--            <div style="color: red;font-size: large">Niepoprawny login lub hasło!</div>--%>
-<%--        </c:if>--%>
+        <c:if test="${param.error ne null}">
+            <div style="color: red;font-size: large">Niepoprawny login lub hasło!</div>
+        </c:if>
     <form method="post" action="/login">
         <div class="form-section form-section--columns">
             <div class="form-section--column">
