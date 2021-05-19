@@ -3,6 +3,7 @@ package pl.coderslab.charity.app.user;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -12,8 +13,10 @@ public class AppUserService implements UserDetailsService {
 
     private final AppUserRepository appUserRepository;
 
+
     public AppUserService(AppUserRepository appUserRepository) {
         this.appUserRepository = appUserRepository;
+
     }
 
     @Override
@@ -25,6 +28,18 @@ public class AppUserService implements UserDetailsService {
 
 
     public void signUpUser(AppUser user) {
+
+        boolean userExists = appUserRepository.findByUsername(user.getUsername()).isPresent();
+
+
+        if (userExists) {
+            throw new IllegalStateException("username already taken");
+        }
+
+
+        user.setAppUserRole(AppUserRole.ROLE_USER);
+        user.setEnabled(true);
+
         this.appUserRepository.save(user);
     }
 

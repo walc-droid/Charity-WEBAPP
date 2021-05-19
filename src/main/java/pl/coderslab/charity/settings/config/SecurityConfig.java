@@ -10,9 +10,7 @@ import org.springframework.security.config.annotation
         .web.configuration.WebSecurityConfigurerAdapter;
 
 
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import pl.coderslab.charity.app.user.AppUser;
 import pl.coderslab.charity.app.user.AppUserService;
 
 //import pl.coderslab.charity.service.SpringSecurity;
@@ -25,9 +23,11 @@ import pl.coderslab.charity.app.user.AppUserService;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final AppUserService appUserService;
+    private final PasswordEncoder encoder;
 
-    public SecurityConfig(AppUserService appUserService) {
+    public SecurityConfig(AppUserService appUserService, PasswordEncoder encoder) {
         this.appUserService = appUserService;
+        this.encoder = encoder;
     }
 
     @Override
@@ -46,14 +46,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .accessDeniedPage("/403");
     }
 
+    @Override
+    public void configure (AuthenticationManagerBuilder auth) throws Exception {
+        auth.authenticationProvider(daoAuthenticationProvider());
+    }
+
+    @Bean
+    public DaoAuthenticationProvider daoAuthenticationProvider() {
+        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
+        provider.setUserDetailsService(appUserService);
+        provider.setPasswordEncoder(encoder);
+        return provider;
+    }
 
 
-
-
-//    @Bean
-//    public PasswordEncoder getPasswordEncoder() {
-//        return NoOpPasswordEncoder.getInstance();
-//    }
 
 
 

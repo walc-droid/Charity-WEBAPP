@@ -67,7 +67,7 @@ public class AppUser implements UserDetails {
 
     @Override
     public boolean isAccountNonLocked() {
-        return !locked;
+        return true;
     }
 
     @Override
@@ -80,6 +80,14 @@ public class AppUser implements UserDetails {
         return enabled;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public AppUser setId(Long id) {
+        this.id = id;
+        return this;
+    }
 
     public String getFirstName() {
         return firstName;

@@ -6,6 +6,9 @@ import org.springframework.context.annotation.Configuration;
 
 
 import org.springframework.format.FormatterRegistry;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import pl.coderslab.charity.settings.converter.CategoryConverter;
 
@@ -25,4 +28,8 @@ public class AppConfig implements WebMvcConfigurer {
         return new CategoryConverter();
     }
 
+    @Bean
+    public PasswordEncoder getPasswordEncoder() {
+        return NoOpPasswordEncoder.getInstance();
+    }
 }
