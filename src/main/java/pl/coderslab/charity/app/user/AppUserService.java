@@ -43,6 +43,17 @@ public class AppUserService implements UserDetailsService {
         this.appUserRepository.save(user);
     }
 
+    public void changeName (String user) {
+
+        AppUser appUser = this.appUserRepository.findByUsername(user).orElseThrow(null);
+        appUser.setFirstName("test");
+        this.appUserRepository.save(appUser);
+
+    }
+
+
+
+
 
     public void enableAppUser(String username) {
         AppUser appUser = this.appUserRepository.findByUsername(username).orElseThrow(null);

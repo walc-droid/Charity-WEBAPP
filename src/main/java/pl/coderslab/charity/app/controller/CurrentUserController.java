@@ -6,36 +6,31 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-//import pl.coderslab.charity.app.user.CurrentUser;
+import org.springframework.web.bind.annotation.ResponseBody;
+import pl.coderslab.charity.app.user.AppUser;
+import pl.coderslab.charity.app.user.AppUserService;
 
 
-//@Controller
-//public class CurrentUserController {
-//
-//    private final UserService userService;
-//
-//    public CurrentUserController(UserService userService) {
-//        this.userService = userService;
-//    }
-//
-//    @GetMapping("/logged")
-//    public String CurrentUser(@AuthenticationPrincipal CurrentUser customUser, Model model) {
-//        User entityUser = customUser.getUser();
-////        Optional<User> newEdit = this.userRepository.findByUserName(entityUser.getUserName());
-//        model.addAttribute("currentUser",entityUser);
-//        return "profileUpdate";
-//    }
-//
-//
-//    @PostMapping("/logged")
-//    public String CurrentUserDataUpdate(User user) {
-//
-//
-//        this.userService.saveUser(user);
-//
-//        return "profileUpdate";
-//    }
-//
-//
-//
-//}
+@Controller
+public class CurrentUserController {
+
+    private final AppUserService appUserService;
+
+    public CurrentUserController(AppUserService appUserService) {
+        this.appUserService = appUserService;
+    }
+
+    @GetMapping("/logged")
+    @ResponseBody
+    public String CurrentUser(@AuthenticationPrincipal AppUser customUser) {
+        this.appUserService.changeName(customUser.getUsername());
+
+        return "Zmieniono imię";
+    }
+
+
+
+
+
+
+}

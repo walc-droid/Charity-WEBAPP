@@ -10,7 +10,7 @@
 
 <form:form method="post" action="/logged" modelAttribute="currentUser">
 
-    Zmien imię:  <form:input name="firstName" type="text" path="firstName"></form:input>
+<%--    Zmien imię:  <form:input name="firstName" type="text" path="firstName"></form:input>--%>
     <button type="submit" class="btn">Potwierdzam</button>
 
 </form:form>
