@@ -5,6 +5,8 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Size;
 import java.util.Collection;
 import java.util.Collections;
 
@@ -17,12 +19,18 @@ public class AppUser implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Size(min = 3, max = 12, message = "Imię musi posiadać od 3 do 12 znaków!")
     private String firstName;
+    @Size(min = 3, max = 12, message = "Nazwisko musi posiadać od 3 do 12 znaków!")
     private String lastName;
+    @Size(min = 3, max = 12, message = "Login musi posiadać od 3 do 12 znaków!")
     private String username;
+    @Email
     private String email;
+
     private String password;
     private String passwordConfirm;
+
     private boolean locked = false;
     private boolean enabled = false;
     @Enumerated(EnumType.STRING)

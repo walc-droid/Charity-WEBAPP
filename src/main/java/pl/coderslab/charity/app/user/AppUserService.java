@@ -43,6 +43,14 @@ public class AppUserService implements UserDetailsService {
         this.appUserRepository.save(user);
     }
 
+
+    public void enableAppUser(String username) {
+        AppUser appUser = this.appUserRepository.findByUsername(username).orElseThrow(null);
+        appUser.setEnabled(true);
+        this.appUserRepository.save(appUser);
+    }
+
+
     public boolean existByUsername(String username) {
         return this.appUserRepository.existsByUsername(username);
     }
