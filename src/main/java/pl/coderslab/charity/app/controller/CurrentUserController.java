@@ -21,11 +21,10 @@ public class CurrentUserController {
     }
 
     @GetMapping("/logged")
-    @ResponseBody
     public String CurrentUser(@AuthenticationPrincipal AppUser customUser) {
-        this.appUserService.changeName(customUser.getUsername());
 
-        return "Zmieniono imię";
+
+        return "profileUpdate";
     }
 
 
