@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import pl.coderslab.charity.app.user.AppUser;
@@ -31,23 +32,18 @@ public class CurrentUserController {
     }
 
     @PostMapping("/logged")
-    public String CurrentUserChangeName(@AuthenticationPrincipal@Valid AppUser loggedUser, AppUser newUserDetails, BindingResult bindingResult) {
+    public String CurrentUserChangeName(@Valid@AuthenticationPrincipal AppUser loggedUser,AppUser newUserDetails, BindingResult bindingResult) {
 
         loggedUser.setFirstName(newUserDetails.getFirstName());
         loggedUser.setLastName(newUserDetails.getLastName());
         loggedUser.setPassword(newUserDetails.getPassword());
 
-        boolean checkIfUserExist = this.userService.existByUsername(loggedUser.getUsername());
+        boolean checkIfUserExist = this.userService.existByUsername(newUserDetails.getUsername());
 
-        if(checkIfUserExist) {
-            bindingResult.rejectValue("username","error.user","Login jest zajęty!");
-        }
 
         if(bindingResult.hasErrors()) {
-            return "logged";
+            return "redirect:/logged";
         }
-
-        loggedUser.setUsername(newUserDetails.getUsername());
 
         this.userService.save(loggedUser);
         return "redirect:/";

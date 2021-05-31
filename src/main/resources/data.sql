@@ -21,3 +21,6 @@ VALUES (NULL , 'Kraków','733215099' ,'Odebrać jak najszybciej!', '2021-05-11',
 
 INSERT INTO app_user (id,app_user_role,first_name,last_name,username,email,password,password_confirm,locked,enabled)
 VALUES (NULL,'ROLE_USER','Michal','Walczyk','walc','test@gmail.com','test','test',false,true);
+
+INSERT INTO app_user (id,app_user_role,first_name,last_name,username,email,password,password_confirm,locked,enabled)
+VALUES (NULL,'ROLE_USER','Anka','Jasion','admin','admin@gmail.com','1','1',false,true);

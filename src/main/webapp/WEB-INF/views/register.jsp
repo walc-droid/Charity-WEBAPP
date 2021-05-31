@@ -3,6 +3,7 @@
 <%@ taglib prefix="form"
            uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="input" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 
 <%@include file="header.jsp" %>
@@ -11,6 +12,9 @@
 <section class="login-page">
     <h2>Załóż konto</h2>
 
+    <sec:authorize access="isAuthenticated()">
+        Logout
+    </sec:authorize>
 
     <%--@elvariable id="user" type="java"--%>
     <form:form action="/register" method="post" modelAttribute="user">

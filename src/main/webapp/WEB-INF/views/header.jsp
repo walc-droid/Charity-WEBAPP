@@ -16,10 +16,13 @@
 <body>
 <header class="header--main-page">
     <nav class="container container--70">
+
+        <sec:authorize access="isAnonymous()">
         <ul class="nav--actions">
             <li><a href="/login" class="btn btn--small btn--highlighted">Zaloguj</a></li>
             <li><a href="/register" class="btn btn--small btn--highlighted">Załóż konto</a></li>
         </ul>
+        </sec:authorize>
 
         <sec:authorize access="isAuthenticated()">
         <ul class="nav--actions">
