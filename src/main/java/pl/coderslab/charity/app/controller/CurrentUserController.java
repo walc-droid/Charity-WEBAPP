@@ -4,6 +4,7 @@ package pl.coderslab.charity.app.controller;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -11,27 +12,44 @@ import pl.coderslab.charity.app.user.AppUser;
 import pl.coderslab.charity.app.user.AppUserRepository;
 import pl.coderslab.charity.app.user.AppUserService;
 
+import javax.validation.Valid;
+
 
 @Controller
 public class CurrentUserController {
 
-    private final AppUserRepository appUserRepository;
+    private final AppUserService userService;
 
-    public CurrentUserController(AppUserRepository appUserRepository) {
-        this.appUserRepository = appUserRepository;
+    public CurrentUserController(AppUserService userService) {
+        this.userService = userService;
     }
 
     @GetMapping("/logged")
     public String CurrentUser (@AuthenticationPrincipal AppUser appUser,Model model) {
-        AppUser user = this.appUserRepository.getByEmail(appUser.getEmail());
-        model.addAttribute("currentUser",user);
+        model.addAttribute("currentUser",appUser);
         return "profileUpdate";
     }
 
     @PostMapping("/logged")
-    public String CurrentUserChangeName(AppUser appUser) {
+    public String CurrentUserChangeName(@AuthenticationPrincipal@Valid AppUser loggedUser, AppUser newUserDetails, BindingResult bindingResult) {
 
-        this.appUserRepository.save(appUser);
+        loggedUser.setFirstName(newUserDetails.getFirstName());
+        loggedUser.setLastName(newUserDetails.getLastName());
+        loggedUser.setPassword(newUserDetails.getPassword());
+
+        boolean checkIfUserExist = this.userService.existByUsername(loggedUser.getUsername());
+
+        if(checkIfUserExist) {
+            bindingResult.rejectValue("username","error.user","Login jest zajęty!");
+        }
+
+        if(bindingResult.hasErrors()) {
+            return "logged";
+        }
+
+        loggedUser.setUsername(newUserDetails.getUsername());
+
+        this.userService.save(loggedUser);
         return "redirect:/";
     }
 

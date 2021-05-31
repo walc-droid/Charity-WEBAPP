@@ -56,7 +56,7 @@ public class RegistrationController {
             return "register";
         }
 
-        this.userService.signUpUser(appUser);
+        this.userService.registerAppUser(appUser);
 
         return "redirect:/login";
     }
