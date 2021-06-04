@@ -32,7 +32,7 @@
                 <form:errors path="lastName" cssStyle="color: red;font-size: large"/>
             </div>
             <div class="form-group form-group--inline">
-                <form:label path="password">Hasło:  <form:input name="lastName" type="password" path="password"></form:input></form:label>
+                <form:label path="password">Hasło:  <a href="/password" class="blue" id="pwUpdate">zmień hasło</a> </form:label>
             </div>
 
         </div>

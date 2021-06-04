@@ -36,7 +36,6 @@ public class CurrentUserController {
 
         loggedUser.setFirstName(newUserDetails.getFirstName());
         loggedUser.setLastName(newUserDetails.getLastName());
-        loggedUser.setPassword(newUserDetails.getPassword());
 
         boolean checkIfUserExist = this.userService.existByUsername(newUserDetails.getUsername());
 
@@ -49,6 +48,23 @@ public class CurrentUserController {
         return "redirect:/";
     }
 
+
+    @GetMapping("/password")
+    public String updatePW(@AuthenticationPrincipal AppUser appUser,Model model) {
+        model.addAttribute("currentUser",appUser);
+        return "pwUpdate";
+    }
+
+    @PostMapping("/password")
+    public String updatePW(@AuthenticationPrincipal AppUser loggedUser, AppUser appUser) {
+
+        loggedUser.setPassword(appUser.getPassword());
+        loggedUser.setPasswordConfirm(appUser.getPasswordConfirm());
+
+        this.userService.save(loggedUser);
+
+        return "redirect:/logged";
+    }
 
 
 
