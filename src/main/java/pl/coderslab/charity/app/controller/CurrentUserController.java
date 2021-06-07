@@ -56,11 +56,19 @@ public class CurrentUserController {
     }
 
     @PostMapping("/password")
-    public String updatePW(@AuthenticationPrincipal AppUser loggedUser, AppUser appUser) {
+    public String updatePW(@Valid@AuthenticationPrincipal AppUser loggedUser, AppUser appUser, BindingResult bindingResult) {
 
+
+
+
+        if(!loggedUser.getPassword().equals(appUser.getPasswordConfirm())) {
+            bindingResult.rejectValue("passwordConfirm","error.user","Stare hasło jest niepoprawne!");
+        }
+
+        if(bindingResult.hasErrors()) {
+            return "password";
+        }
         loggedUser.setPassword(appUser.getPassword());
-        loggedUser.setPasswordConfirm(appUser.getPasswordConfirm());
-
         this.userService.save(loggedUser);
 
         return "redirect:/logged";

@@ -28,11 +28,13 @@
                 <form:errors path="firstName" cssStyle="color: red;font-size: large"/>
             </div>
             <div class="form-group form-group--inline">
-                <form:label path="lastName">Nazwisko:  <form:input name="lastName" type="text" path="lastName"></form:input></form:label>
+                <form:label path="lastName">Nazwisko:  <form:input name="lastName" type="text" path="lastName" ></form:input></form:label>
                 <form:errors path="lastName" cssStyle="color: red;font-size: large"/>
             </div>
             <div class="form-group form-group--inline">
-                <form:label path="password">Hasło:  <a href="/password" class="blue" id="pwUpdate">zmień hasło</a> </form:label>
+                <form:label path="password">Hasło:
+                    <a class="btn" href="/password">Zmień hasło</a>
+                </form:label>
             </div>
 
         </div>
@@ -46,8 +48,10 @@
     </div>
 </form:form>
 
-</section>
 
+
+
+</section>
 
 
 
