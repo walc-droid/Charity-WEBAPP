@@ -18,14 +18,18 @@
         <div class="form-section form-section--columns">
             <div class="form-section--column">
 
+
                 <div class="form-group form-group--inline">
-                    <form:label path="password">Hasło: <form:input type="password" name="password" path="password"/></form:label>
+                    <form:label path="password">Hasło: <form:input type="text" name="password" path="password" onfocus="this.value=''"/></form:label>
                     <form:errors path="password" cssStyle="color: red;font-size: large"/>
                 </div>
                 <div class="form-group form-group--inline">
-                    <form:label path="passwordConfirm">Powtórz hasło: <form:input type="password" name="passwordConfirm" path="passwordConfirm"/></form:label>
+                    <form:label path="passwordConfirm">Powtórz hasło: <form:input type="text" name="passwordConfirm" path="passwordConfirm" onfocus="this.value=''"/></form:label>
                     <form:errors path="passwordConfirm" cssStyle="color: red;font-size: large"/>
                 </div>
+
+
+
             </div>
         </div>
 
