@@ -25,7 +25,7 @@
             </div>
             <div class="form-group form-group--inline">
                 <form:label path="firstName">Imię:  <form:input name="firstName" type="text" path="firstName"></form:input></form:label>
-                <form:errors path="firstName" cssStyle="color: red;font-size: large"/>
+                <span id="firstNameValidate"/>
             </div>
             <div class="form-group form-group--inline">
                 <form:label path="lastName">Nazwisko:  <form:input name="lastName" type="text" path="lastName" ></form:input></form:label>
@@ -43,7 +43,7 @@
 
     <div class="form-group form-group--buttons">
 
-        <form:button class="btn" type="submit">Edytuj dane</form:button>
+        <form:button class="btn" type="submit" id="updateButton">Edytuj dane</form:button>
             <%--            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>--%>
     </div>
 </form:form>
@@ -53,6 +53,6 @@
 
 </section>
 
-
+<script src="/<c:url value="resources/js/profileUpdate.js"/>"></script>
 
 <%@include file="footer.jsp" %>

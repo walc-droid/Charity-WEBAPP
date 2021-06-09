@@ -17,11 +17,11 @@ import javax.validation.Valid;
 
 
 @Controller
-public class CurrentUserController {
+public class ProfileUpdateController {
 
     private final AppUserService userService;
 
-    public CurrentUserController(AppUserService userService) {
+    public ProfileUpdateController(AppUserService userService) {
         this.userService = userService;
     }
 
@@ -37,11 +37,11 @@ public class CurrentUserController {
         loggedUser.setFirstName(newUserDetails.getFirstName());
         loggedUser.setLastName(newUserDetails.getLastName());
 
-        boolean checkIfUserExist = this.userService.existByUsername(newUserDetails.getUsername());
+
 
 
         if(bindingResult.hasErrors()) {
-            return "redirect:/logged";
+            return "logged";
         }
 
         this.userService.save(loggedUser);
@@ -59,8 +59,6 @@ public class CurrentUserController {
     public String updatePW(@Valid@AuthenticationPrincipal AppUser loggedUser, AppUser appUser, BindingResult bindingResult) {
 
 
-
-
         if(!loggedUser.getPassword().equals(appUser.getPasswordConfirm())) {
             bindingResult.rejectValue("passwordConfirm","error.user","Stare hasło jest niepoprawne!");
         }
@@ -68,7 +66,10 @@ public class CurrentUserController {
         if(bindingResult.hasErrors()) {
             return "password";
         }
+
         loggedUser.setPassword(appUser.getPassword());
+        loggedUser.setPasswordConfirm(appUser.getPassword());
+
         this.userService.save(loggedUser);
 
         return "redirect:/logged";
