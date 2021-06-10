@@ -1,20 +1,30 @@
-let profileUpdateButton = document.querySelector("#updateButton");
+// let profileUpdateButton = document.querySelector("#updateButton");
+//
+//
+//
+// profileUpdateButton.addEventListener("click",() => {
+//
+//     let firstNameValidate = document.querySelector('[name="firstName"]');
+//
+//     if (firstNameValidate.value.length <3) {
+//         this.text = "Imię musi posiadać od 3 do 12 znaków!"
+//         document.querySelector("#firstNameValidate").innerHTML = this.text;
+//         firstNameValidate.focus();
+//
+//     }else {
+//         this.text = "";
+//         document.querySelector("#firstNameValidate").innerHTML = this.text;
+//     }
+//
+// })
 
+import { firstNameValidate} from "./controller";
 
-profileUpdateButton.addEventListener("click",() => {
+let firstName = document.querySelector('[name="firstName"]');
+let firstNameTest = document.querySelector("#firstNameValidate");
+firstNameTest.style.display = "none";
 
-    let firstNameValidate = document.querySelector('[name="firstName"]');
-
-    if (firstNameValidate.value.length <3) {
-        this.text = "Imię musi posiadać od 3 do 12 znaków!"
-        document.querySelector("#firstNameValidate").innerHTML = this.text;
-        firstNameValidate.focus();
-        profileUpdateButton.disabled = true;
-    }else {
-        this.text = "";
-        document.querySelector("#firstNameValidate").innerHTML = this.text;
-        profileUpdateButton.disabled = false;
-    }
-
+firstName.addEventListener('keypress', event => {
+    let text = firstName.value + `${event.key}`;
+    firstNameValidate(text, firstNameTest);
 })
-

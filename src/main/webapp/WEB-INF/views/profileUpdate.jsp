@@ -42,7 +42,6 @@
 
 
     <div class="form-group form-group--buttons">
-
         <form:button class="btn" type="submit" id="updateButton">Edytuj dane</form:button>
             <%--            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>--%>
     </div>
@@ -53,6 +52,9 @@
 
 </section>
 
-<script src="/<c:url value="resources/js/profileUpdate.js"/>"></script>
-
+<%--<script src="/<c:url value="resources/js/profileUpdate.js"/>"></script>--%>
+<script type="module" src="profileUpdate.js"></script>
+<%--# If it is not a module i.e. simple script--%>
+<%--# you can use the nomodule tag--%>
+<%--<script nomodule src="classic-app-bundle.js"></script>--%>
 <%@include file="footer.jsp" %>
