@@ -19,7 +19,7 @@ public class AppUser implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-//    @Size(min = 3, max = 12, message = "Imię musi posiadać od 3 do 12 znaków!")
+    @Size(min = 3, max = 12, message = "Imię musi posiadać od 3 do 12 znaków!")
     private String firstName;
     @Size(min = 3, max = 12, message = "Nazwisko musi posiadać od 3 do 12 znaków!")
     private String lastName;

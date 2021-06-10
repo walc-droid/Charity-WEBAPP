@@ -12,7 +12,7 @@
 
     <h2>Twój profil</h2>
 <%--@elvariable id="currentUser" type=""--%>
-<form:form method="post" action="/logged" modelAttribute="currentUser">
+<form:form id="currentUser" method="post" action="/logged" modelAttribute="currentUser">
     <div class="form-section form-section--columns">
         <div class="form-section--column">
             <div class="form-group form-group--inline">
@@ -25,11 +25,13 @@
             </div>
             <div class="form-group form-group--inline">
                 <form:label path="firstName">Imię:  <form:input name="firstName" type="text" path="firstName"></form:input></form:label>
-                <span id="firstNameValidate"/>
+                <form:errors path="firstName" cssStyle="color: red;font-size: large"/>
+                <span id="firstNameError"/>
             </div>
             <div class="form-group form-group--inline">
                 <form:label path="lastName">Nazwisko:  <form:input name="lastName" type="text" path="lastName" ></form:input></form:label>
                 <form:errors path="lastName" cssStyle="color: red;font-size: large"/>
+                <span id="lastNameError"/>
             </div>
             <div class="form-group form-group--inline">
                 <form:label path="password">Hasło:
@@ -52,9 +54,5 @@
 
 </section>
 
-<%--<script src="/<c:url value="resources/js/profileUpdate.js"/>"></script>--%>
-<script type="module" src="profileUpdate.js"></script>
-<%--# If it is not a module i.e. simple script--%>
-<%--# you can use the nomodule tag--%>
-<%--<script nomodule src="classic-app-bundle.js"></script>--%>
+<script src="/<c:url value="resources/js/profileUpdate.js"/>"></script>
 <%@include file="footer.jsp" %>

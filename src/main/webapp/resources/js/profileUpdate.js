@@ -1,30 +1,30 @@
-// let profileUpdateButton = document.querySelector("#updateButton");
-//
-//
-//
-// profileUpdateButton.addEventListener("click",() => {
-//
-//     let firstNameValidate = document.querySelector('[name="firstName"]');
-//
-//     if (firstNameValidate.value.length <3) {
-//         this.text = "Imię musi posiadać od 3 do 12 znaków!"
-//         document.querySelector("#firstNameValidate").innerHTML = this.text;
-//         firstNameValidate.focus();
-//
-//     }else {
-//         this.text = "";
-//         document.querySelector("#firstNameValidate").innerHTML = this.text;
-//     }
-//
-// })
+let firstNameValidate = document.querySelector('[name="firstName"]');
+let firstNameError = document.querySelector("#firstNameError");
 
-import { firstNameValidate} from "./controller";
+let lastNameValidate = document.querySelector('[name="lastName"]');
+let lastNameError = document.querySelector("#lastNameError");
 
-let firstName = document.querySelector('[name="firstName"]');
-let firstNameTest = document.querySelector("#firstNameValidate");
-firstNameTest.style.display = "none";
+let form = document.querySelector('#currentUser');
 
-firstName.addEventListener('keypress', event => {
-    let text = firstName.value + `${event.key}`;
-    firstNameValidate(text, firstNameTest);
+
+form.addEventListener('submit', function (event) {
+
+    if (firstNameValidate.value.length < 3) {
+        firstNameError.innerText = 'Imię musi posiadać od 3 do 12 znaków!';
+        event.preventDefault();
+    }else {
+        firstNameError.innerText = '';
+    }
+
+    if (lastNameValidate.value.length < 3) {
+        lastNameError.innerText = 'Nazwisko musi posiadać od 3 do 12 znaków!';
+        event.preventDefault();
+    }else {
+        lastNameError.innerText = '';
+    }
+
+
 })
+
+
+
