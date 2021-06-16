@@ -26,12 +26,12 @@
             <div class="form-group form-group--inline">
                 <form:label path="firstName">Imię:  <form:input name="firstName" type="text" path="firstName"></form:input></form:label>
                 <form:errors path="firstName" cssStyle="color: red;font-size: large"/>
-                <span id="firstNameError"/>
+                <span id="firstNameError" style="color: red;font-size: large"/>
             </div>
             <div class="form-group form-group--inline">
                 <form:label path="lastName">Nazwisko:  <form:input name="lastName" type="text" path="lastName" ></form:input></form:label>
                 <form:errors path="lastName" cssStyle="color: red;font-size: large"/>
-                <span id="lastNameError"/>
+                <span id="lastNameError" style="font-size: large; color: red"/>
             </div>
             <div class="form-group form-group--inline">
                 <form:label path="password">Hasło:

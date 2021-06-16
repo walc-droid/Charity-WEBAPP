@@ -32,16 +32,14 @@ public class ProfileUpdateController {
     }
 
     @PostMapping("/logged")
-    public String CurrentUserChangeName(@Valid@AuthenticationPrincipal AppUser loggedUser,AppUser newUserDetails, BindingResult bindingResult) {
+    public String CurrentUserChangeName(@Valid@AuthenticationPrincipal AppUser loggedUser,@ModelAttribute("currentUser") AppUser newUserDetails, BindingResult bindingResult) {
 
         loggedUser.setFirstName(newUserDetails.getFirstName());
         loggedUser.setLastName(newUserDetails.getLastName());
 
 
-
-
         if(bindingResult.hasErrors()) {
-            return "logged";
+            return "redirect:/logged";
         }
 
         this.userService.save(loggedUser);
@@ -56,7 +54,7 @@ public class ProfileUpdateController {
     }
 
     @PostMapping("/password")
-    public String updatePW(@Valid@AuthenticationPrincipal AppUser loggedUser, AppUser appUser, BindingResult bindingResult) {
+    public String updatePW(@Valid@AuthenticationPrincipal AppUser loggedUser,@ModelAttribute("currentUser") AppUser appUser, BindingResult bindingResult) {
 
 
         if(!loggedUser.getPassword().equals(appUser.getPasswordConfirm())) {
@@ -64,7 +62,7 @@ public class ProfileUpdateController {
         }
 
         if(bindingResult.hasErrors()) {
-            return "password";
+            return "pwUpdate";
         }
 
         loggedUser.setPassword(appUser.getPassword());

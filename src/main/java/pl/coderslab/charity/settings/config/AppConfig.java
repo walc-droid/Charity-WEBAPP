@@ -13,7 +13,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import pl.coderslab.charity.settings.converter.CategoryConverter;
 
 @Configuration
-@ComponentScan(basePackages = {"pl.coderslab"})
+@ComponentScan(basePackages = {"pl"})
 public class AppConfig implements WebMvcConfigurer {
 
 
