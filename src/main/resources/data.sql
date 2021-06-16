@@ -23,4 +23,8 @@ INSERT INTO app_user (id,app_user_role,first_name,last_name,username,email,passw
 VALUES (NULL,'ROLE_USER','Michal','Walczyk','walc','test@gmail.com','test','test',false,true);
 
 INSERT INTO app_user (id,app_user_role,first_name,last_name,username,email,password,password_confirm,locked,enabled)
-VALUES (NULL,'ROLE_USER','Anka','Jasion','admin','admin@gmail.com','1','1',false,true);
+VALUES (NULL,'ROLE_USER','Anka','Jasion','anka','admin@gmail.com','1','1',false,true);
+
+
+INSERT INTO app_user (id,app_user_role,first_name,last_name,username,email,password,password_confirm,locked,enabled)
+VALUES (NULL,'ROLE_ADMIN','admin','admin','admin','admin@admin.com','admin','admin',false,true);

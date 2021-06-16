@@ -3,9 +3,7 @@ package pl.coderslab.charity.app.user;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class AppUserService implements UserDetailsService {
@@ -23,11 +21,13 @@ public class AppUserService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-       return this.appUserRepository.findByUsername(username)
-                .orElseThrow(() -> new UsernameNotFoundException(String.format(USER_NOT_FOUND,username)));
+       return this.appUserRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException(String.format(USER_NOT_FOUND,username)));
+
     }
 
-//
+
+
+
     public void registerAppUser(AppUser user) {
 
         boolean userExists = appUserRepository.findByUsername(user.getUsername()).isPresent();
