@@ -24,11 +24,18 @@
         </ul>
         </sec:authorize>
 
-        <sec:authorize access="isAuthenticated()">
+        <sec:authorize access="hasRole('ROLE_USER')">
         <ul class="nav--actions">
             <li><a href="/logged" class="btn btn--small btn--highlighted">Twój profil</a></li>
             <li><a href="/logout" class="btn btn--small btn--highlighted">Wyloguj się</a></li>
         </ul>
+        </sec:authorize>
+
+        <sec:authorize access="hasRole('ROLE_ADMIN')">
+            <ul class="nav--actions">
+                <li><a href="/admin/controlPanel" class="btn btn--small btn--highlighted">Panel administratora</a></li>
+                <li><a href="/logout" class="btn btn--small btn--highlighted">Wyloguj się</a></li>
+            </ul>
         </sec:authorize>
 
 

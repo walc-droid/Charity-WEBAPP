@@ -3,7 +3,7 @@ package pl.coderslab.charity.app.user;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import pl.coderslab.charity.app.user.role.Role;
+
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -37,8 +37,7 @@ public class AppUser implements UserDetails {
     @Enumerated(EnumType.STRING)
     private AppUserRole appUserRole;
 
-    @ManyToMany
-    private Collection<Role> roles;
+
 
     public AppUser (String firstName, String lastName, String username, String email, String password, AppUserRole appUserRole) {
         this.firstName = firstName;

@@ -10,10 +10,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/admin")
 public class AdminPanelController {
 
-    @GetMapping("/test")
-    @ResponseBody
-    private String test () {
-        return "test123";
+    @GetMapping("/controlPanel")
+    private String getAdminPanel () {
+        return "controlPanel";
     }
 
 }
