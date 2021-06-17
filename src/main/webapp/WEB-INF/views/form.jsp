@@ -51,7 +51,7 @@
                 </div>
                 </c:forEach>
                 <form:errors path="categories"/>
-                <span id="validateCategory"></span>
+                <span id="validateCategory" style="color: red;font-size: large"></span>
                 <div class="form-group form-group--buttons">
                     <button type="button" class="btn next-step" id="button1">Dalej</button>
                 </div>
@@ -66,7 +66,7 @@
                         Liczba 60l worków:
                         <input id="quantity" type="number" name="quantity" step="1" min="1" />
                         <form:errors path="quantity"/>
-                        <span id="testValidate"/>
+                        <span id="testValidate" style="color: red;font-size: large"/>
 
 <%--                        <script>--%>
 <%--                              function myFunction() {--%>
@@ -102,7 +102,7 @@
                         </label>
                     </div>
                 </c:forEach>
-                <span id="validateInstitution"></span>
+                <span id="validateInstitution" style="color: red;font-size: large"></span>
 <%--                <script>--%>
 <%--                    // function myFunction1() {--%>
 <%--                    //--%>
@@ -138,25 +138,25 @@
                         <h4>Adres odbioru</h4>
                         <div class="form-group form-group--inline">
                             <label> Ulica <input type="text" name="street" /> </label>
-                            <span id="validateStreet"/>
+                            <span id="validateStreet" style="color: red;font-size: large"/>
                         </div>
 
                         <div class="form-group form-group--inline">
                             <label> Miasto <input type="text" name="city" /> </label>
-                            <span id="validateCity"/>
+                            <span id="validateCity" style="color: red;font-size: large"/>
                         </div>
 
                         <div class="form-group form-group--inline">
                             <label>
                                 Kod pocztowy <input type="text" name="zipCode" /> </label>
-                            <span id="validateZipCode"/>
+                            <span id="validateZipCode" style="color: red;font-size: large"/>
                         </div>
 
                         <div class="form-group form-group--inline">
                             <label>
                                 Numer telefonu <input type="phone" name="phone" />
                             </label>
-                            <span id="validatePhone"/>
+                            <span id="validatePhone" style="color: red;font-size: large"/>
                         </div>
                     </div>
 
@@ -164,7 +164,7 @@
                         <h4>Termin odbioru</h4>
                         <div class="form-group form-group--inline">
                             <label> Data <input type="date" name="pickUpDate" /> </label>
-                            <span id="validateDate"/>
+                            <span id="validateDate" style="color: red;font-size: large"/>
                         </div>
 
                         <div class="form-group form-group--inline">
@@ -197,7 +197,7 @@
                                 <span class="icon icon-bag"></span>
                                 <span class="summary--text">
 
-                                    Liczba oddanych worków : <span id="quantityValue"></span></span> kategorii : <span id="categoryList"></span>
+                                    Liczba oddanych worków : <span id="quantityValue"></span></span> kategorii : <span id="categoryList" ></span>
 
                                 </span>
                             </li>
