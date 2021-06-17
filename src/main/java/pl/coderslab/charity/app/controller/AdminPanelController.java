@@ -12,7 +12,7 @@ public class AdminPanelController {
 
     @GetMapping("/controlPanel")
     private String getAdminPanel () {
-        return "controlPanel";
+        return "AdminControlPanel";
     }
 
 }

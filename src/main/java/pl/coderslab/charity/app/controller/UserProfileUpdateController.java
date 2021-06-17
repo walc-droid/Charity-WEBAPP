@@ -8,27 +8,25 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import pl.coderslab.charity.app.user.AppUser;
-import pl.coderslab.charity.app.user.AppUserRepository;
 import pl.coderslab.charity.app.user.AppUserService;
 
 import javax.validation.Valid;
 
 
 @Controller
-public class ProfileUpdateController {
+public class UserProfileUpdateController {
 
     private final AppUserService userService;
 
-    public ProfileUpdateController(AppUserService userService) {
+    public UserProfileUpdateController(AppUserService userService) {
         this.userService = userService;
     }
 
     @GetMapping("/logged")
     public String CurrentUser (@AuthenticationPrincipal AppUser appUser,Model model) {
         model.addAttribute("currentUser",appUser);
-        return "profileUpdate";
+        return "UserProfileUpdate";
     }
 
     @PostMapping("/logged")
@@ -50,7 +48,7 @@ public class ProfileUpdateController {
     @GetMapping("/password")
     public String updatePW(@AuthenticationPrincipal AppUser appUser,Model model) {
         model.addAttribute("currentUser",appUser);
-        return "pwUpdate";
+        return "UserPasswordUpdate";
     }
 
     @PostMapping("/password")
@@ -62,7 +60,7 @@ public class ProfileUpdateController {
         }
 
         if(bindingResult.hasErrors()) {
-            return "pwUpdate";
+            return "UserPasswordUpdate";
         }
 
         loggedUser.setPassword(appUser.getPassword());
