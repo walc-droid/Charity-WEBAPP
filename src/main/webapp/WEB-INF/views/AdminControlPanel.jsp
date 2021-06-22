@@ -10,11 +10,10 @@
 
     <h2>Panel Administracyjny</h2>
 
-        <ul class="nav--actions">
-            <li><a href="/admin/donation" class="btn btn--without-border active">Dotacje</a></li>
-            <li><a href="/admin/category" class="btn btn--without-border active">Kategorie</a></li>
-            <li><a href="/admin/institution" class="btn btn--without-border active">Instytucje</a></li>
-            <li><a href="/admin/users" class="btn btn--without-border active">Użytkownicy</a></li>
+
+        <ul>
+            <li style="display: inline"><a href="/admin/donation" class="btn btn--without-border active">Ustawienia dotacji</a></li>
+            <li style="display: inline"><a href="/admin/users" class="btn btn--without-border active">Ustawienia użytkowników</a></li>
         </ul>
 
 
