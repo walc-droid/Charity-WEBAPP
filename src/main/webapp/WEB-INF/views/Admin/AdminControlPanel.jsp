@@ -4,7 +4,7 @@
            uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="input" uri="http://www.springframework.org/tags/form" %>
 
-<%@include file="header.jsp" %>
+<%@include file="../header.jsp" %>
 
 <section class="login-page">
 
@@ -20,4 +20,4 @@
 </section>
 
 
-<%@include file="footer.jsp" %>
+<%@include file="../footer.jsp" %>

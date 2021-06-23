@@ -8,7 +8,9 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "donation")
@@ -21,10 +23,10 @@ public class Donation {
     @Min(1)
     private Integer quantity;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "donation_category")
     @NotEmpty(message = "Wybierz kategorię!")
-    private List<Category> categories;
+    private List<Category> categories = new ArrayList<>();
 
     @ManyToOne
     @NotNull(message = "Wybierz instytucję!")
@@ -144,4 +146,12 @@ public class Donation {
         this.pickUpComment = pickUpComment;
         return this;
     }
+
+    @Transient //dodatkowe pole nie szukane w bazie danych
+    public String getCategoriesNames () {
+        List<String> categoriesName = categories.stream().map(name -> name.getName()).collect(Collectors.toList());
+        return String.join(",", categoriesName);
+    }
+
+
 }

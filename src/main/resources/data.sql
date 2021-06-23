@@ -18,6 +18,9 @@ VALUES (NULL , 'Kraków','733215099' ,'Odebrać jak najszybciej!', '2021-05-11',
        (NULL , 'Oświęcim', '677543012','Uwaga na wagę paczki!', '2021-05-04', '08:00', 5, 'Podwawelska 69',
         '32-600', 3);
 
+INSERT INTO donation_category VALUES (1,3), (2,5), (3,4);
+
+
 
 INSERT INTO app_user (id,app_user_role,first_name,last_name,username,email,password,password_confirm,locked,enabled)
 VALUES (NULL,'ROLE_ADMIN','Michal','Walczyk','walc','test@gmail.com','test','test',false,true);

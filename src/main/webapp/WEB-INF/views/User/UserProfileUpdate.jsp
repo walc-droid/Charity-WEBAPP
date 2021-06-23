@@ -6,7 +6,7 @@
 
 
 
-<%@include file="header.jsp" %>
+<%@include file="../header.jsp" %>
 
 <section class="login-page">
 
@@ -55,4 +55,4 @@
 </section>
 
 <script src="/<c:url value="resources/js/profileUpdate.js"/>"></script>
-<%@include file="footer.jsp" %>
+<%@include file="../footer.jsp" %>

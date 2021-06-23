@@ -1958,3 +1958,10 @@ footer .bottom-line--icons a img {
     text-align: center;
   }
 }
+
+
+.dropdownEDIT {
+  width: 350px;
+  height: 30px;
+  font-size: large;
+}

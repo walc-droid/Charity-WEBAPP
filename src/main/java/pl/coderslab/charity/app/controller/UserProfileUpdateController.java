@@ -26,7 +26,7 @@ public class UserProfileUpdateController {
     @GetMapping("/logged")
     public String CurrentUser (@AuthenticationPrincipal AppUser appUser,Model model) {
         model.addAttribute("currentUser",appUser);
-        return "UserProfileUpdate";
+        return "User/UserProfileUpdate";
     }
 
     @PostMapping("/logged")
@@ -48,7 +48,7 @@ public class UserProfileUpdateController {
     @GetMapping("/password")
     public String updatePW(@AuthenticationPrincipal AppUser appUser,Model model) {
         model.addAttribute("currentUser",appUser);
-        return "UserPasswordUpdate";
+        return "User/UserPasswordUpdate";
     }
 
     @PostMapping("/password")
@@ -60,7 +60,7 @@ public class UserProfileUpdateController {
         }
 
         if(bindingResult.hasErrors()) {
-            return "UserPasswordUpdate";
+            return "User/UserPasswordUpdate";
         }
 
         loggedUser.setPassword(appUser.getPassword());

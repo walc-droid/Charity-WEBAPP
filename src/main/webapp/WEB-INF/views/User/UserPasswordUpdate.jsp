@@ -6,7 +6,7 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 
-<%@include file="header.jsp" %>
+<%@include file="../header.jsp" %>
 
 
 <section class="login-page">
@@ -42,4 +42,4 @@
 
 <script src="/<c:url value="resources/js/pwUpdate.js"/>"></script>
 
-<%@include file="footer.jsp" %>
+<%@include file="../footer.jsp" %>
