@@ -5,6 +5,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class AppUserService implements UserDetailsService {
 
@@ -64,6 +66,10 @@ public class AppUserService implements UserDetailsService {
 
     public boolean existByEmail(String email) {
         return this.appUserRepository.existsByEmail(email);
+    }
+
+    public List<AppUser> findAll() {
+        return this.appUserRepository.findAll();
     }
 
 }

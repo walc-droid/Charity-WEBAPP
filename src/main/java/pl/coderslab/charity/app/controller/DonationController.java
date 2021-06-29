@@ -46,7 +46,6 @@ public class DonationController {
             return "form";
         }
 
-
         this.donationService.save(donation);
         return "form-confirmation";
     }

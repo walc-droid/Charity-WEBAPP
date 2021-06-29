@@ -3,7 +3,6 @@ package pl.coderslab.charity.app.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.charity.app.category.Category;
 import pl.coderslab.charity.app.category.CategoryService;
@@ -11,8 +10,9 @@ import pl.coderslab.charity.app.donation.Donation;
 import pl.coderslab.charity.app.donation.DonationService;
 import pl.coderslab.charity.app.institution.Institution;
 import pl.coderslab.charity.app.institution.InstitutionService;
+import pl.coderslab.charity.app.user.AppUser;
+import pl.coderslab.charity.app.user.AppUserService;
 
-import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -22,11 +22,13 @@ public class AdminPanelController {
     private DonationService donationService;
     private CategoryService categoryService;
     private InstitutionService institutionService;
+    private AppUserService appUserService;
 
-    public AdminPanelController(DonationService donationService, CategoryService categoryService, InstitutionService institutionService) {
+    public AdminPanelController(DonationService donationService, CategoryService categoryService, InstitutionService institutionService, AppUserService appUserService) {
         this.donationService = donationService;
         this.categoryService = categoryService;
         this.institutionService = institutionService;
+        this.appUserService = appUserService;
     }
 
     @GetMapping("/controlPanel")
@@ -53,9 +55,23 @@ public class AdminPanelController {
     private String getDonationEdit (@ModelAttribute Donation donation) {
 
         this.donationService.save(donation);
-
         return "redirect:/admin/donation";
     }
+
+    @GetMapping("/donation/delete/{id}")
+    private String deleteDonation (@PathVariable Long id) {
+        this.donationService.delete(id);
+        return "redirect:/admin/donation";
+    }
+
+    @GetMapping("/users")
+    private String usersList (Model model) {
+        List<AppUser> appUsers = this.appUserService.findAll();
+        model.addAttribute("appUsers",appUsers);
+        return "Admin/AdminUsersList";
+    }
+
+
 
     @ModelAttribute("category")
     private List<Category> categoryList() {
