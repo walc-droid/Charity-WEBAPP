@@ -6,6 +6,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AppUserService implements UserDetailsService {
@@ -39,7 +40,6 @@ public class AppUserService implements UserDetailsService {
             throw new IllegalStateException("username already taken");
         }
 
-
         user.setAppUserRole(AppUserRole.ROLE_USER);
         user.setEnabled(true);
 
@@ -71,5 +71,10 @@ public class AppUserService implements UserDetailsService {
     public List<AppUser> findAll() {
         return this.appUserRepository.findAll();
     }
+
+    public Optional<AppUser> findById(Long id) {
+        return this.appUserRepository.findById(id);
+    }
+
 
 }

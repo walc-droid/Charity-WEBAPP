@@ -1,6 +1,8 @@
 package pl.coderslab.charity.app.controller;
 
 
+import javassist.NotFoundException;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -53,7 +55,6 @@ public class AdminPanelController {
 
     @PostMapping("/donation/edit/{id}")
     private String getDonationEdit (@ModelAttribute Donation donation) {
-
         this.donationService.save(donation);
         return "redirect:/admin/donation";
     }
@@ -69,6 +70,21 @@ public class AdminPanelController {
         List<AppUser> appUsers = this.appUserService.findAll();
         model.addAttribute("appUsers",appUsers);
         return "Admin/AdminUsersList";
+    }
+
+
+    @GetMapping("/users/edit/{id}")
+    private String getUsersEdit (@PathVariable Long id, Model model) {
+        AppUser appUser = this.appUserService.findById(id).orElseThrow(() -> new UsernameNotFoundException("Nie znaleziono użytkownika"));
+        model.addAttribute("appUser",appUser);
+        return "Admin/AdminUsersEdit";
+    }
+
+    @PostMapping("/users/edit/{id}")
+    private String postUsersEdit(@ModelAttribute AppUser appUser) {
+        AppUser appUserSave = appUser.setPasswordConfirm(appUser.getPassword());
+        this.appUserService.save(appUserSave);
+        return "redirect:/admin/users";
     }
 
 
