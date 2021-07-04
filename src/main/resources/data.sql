@@ -10,6 +10,7 @@ INSERT INTO Institution (id,name,description) VALUES (NULL ,'Dla dzieci','Pomoc 
 INSERT INTO Institution (id,name,description) VALUES (NULL,'A kogo','Pomoc wybudzaniu dzieci ze śpiączki');
 INSERT INTO Institution (id,name,description) VALUES (NULL,'Bez domu','Pomoc dla osób nie posiadających miejsca zamieszkania');
 
+
 INSERT INTO donation
 VALUES (NULL , 'Kraków','733215099' ,'Odebrać jak najszybciej!', '2021-05-11', '08:00', 6, 'Jagiełły 60B',
         '32-560', 1),

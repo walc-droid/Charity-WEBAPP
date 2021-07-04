@@ -70,13 +70,15 @@
 
             </div>
         </div>
-        
+
+
         <div class="form-group form-group--buttons">
             <form:button class="btn" type="submit">Edytuj użytkownika</form:button>
                 <%--            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>--%>
         </div>
+
         <div class="form-group form-group--buttons">
-            <a class="btn" href="/admin/users">Powrót</a>
+            <a class="btn" href="/admin/donation">Powrót</a>
         </div>
     </form:form>
 

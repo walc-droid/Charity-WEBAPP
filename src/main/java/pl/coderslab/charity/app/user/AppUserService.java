@@ -76,5 +76,7 @@ public class AppUserService implements UserDetailsService {
         return this.appUserRepository.findById(id);
     }
 
-
+    public void delete (Long id) {
+        this.appUserRepository.deleteById(id);
+    }
 }

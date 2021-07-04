@@ -5,6 +5,7 @@ import javassist.NotFoundException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.charity.app.category.Category;
 import pl.coderslab.charity.app.category.CategoryService;
@@ -15,6 +16,7 @@ import pl.coderslab.charity.app.institution.InstitutionService;
 import pl.coderslab.charity.app.user.AppUser;
 import pl.coderslab.charity.app.user.AppUserService;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -86,6 +88,38 @@ public class AdminPanelController {
         this.appUserService.save(appUserSave);
         return "redirect:/admin/users";
     }
+
+    @GetMapping("/users/delete/{id}")
+    private String deleteUser(@PathVariable Long id) {
+        this.appUserService.delete(id);
+        return "redirect:/admin/users";
+    }
+
+
+    @GetMapping("/institution")
+    private String getInstitutionList () {
+        return "Admin/AdminInstitutionsList";
+    }
+
+    @GetMapping("/institution/add")
+    private String institutionAdd (Model model) {
+        model.addAttribute("instit",new Institution());
+        return "Admin/AdminInstitutionsAdd";
+    }
+
+    @PostMapping("/institution/add")
+    private String institutionAdd (@Valid Institution institution, BindingResult bindingResult) {
+
+        if (bindingResult.hasErrors()) {
+            return "Admin/AdminInstitutionsAdd";
+        }
+
+
+        this.institutionService.save(institution);
+        return "Admin/AdminInstitutionsList";
+    }
+
+
 
 
 

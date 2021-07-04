@@ -52,8 +52,8 @@
     </div>
 
     <div class="form-group form-group--buttons">
-        <a class="btn" href="/donation/add">Dodaj dotacje</a>
         <a class="btn" href="/admin/controlPanel">Powrót</a>
+        <a class="btn" href="/donation/add">Dodaj dotacje</a>
     </div>
 
 
