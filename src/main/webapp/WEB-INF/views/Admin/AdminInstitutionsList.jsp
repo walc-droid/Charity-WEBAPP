@@ -22,13 +22,13 @@
             </thead>
 
             <tbody>
-            <c:forEach items="${institution}" var="institution">
+            <c:forEach items="${institutions}" var="institutions">
             <tr>
-                <td><c:out value="${institution.id}"/></td>
-                <td><c:out value="${institution.name}"/></td>
-                <td><c:out value="${institution.description}"/></td>
-                <td><a href="/admin/institution/edit/${institution.id}">Edytuj</a></td>
-                <td><a href="/admin/institution/delete/${institution.id}">Usuń</a></td>
+                <td><c:out value="${institutions.id}"/></td>
+                <td><c:out value="${institutions.name}"/></td>
+                <td><c:out value="${institutions.description}"/></td>
+                <td><a href="/admin/institutions/edit/${institutions.id}">Edytuj</a></td>
+                <td><a href="/admin/institutions/delete/${institutions.id}">Usuń</a></td>
             </tr>
             </c:forEach>
             <tbody>
@@ -37,7 +37,7 @@
 
     <div class="form-group form-group--buttons">
         <a class="btn" href="/admin/controlPanel">Powrót</a>
-        <a class="btn" href="/admin/institution/add">Dodaj instytucje</a>
+        <a class="btn" href="/admin/institutions/add">Dodaj instytucje</a>
     </div>
 
 

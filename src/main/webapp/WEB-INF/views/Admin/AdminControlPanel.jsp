@@ -12,8 +12,8 @@
 
 
         <ul>
-            <li style="display: inline"><a href="/admin/donation" class="btn btn--without-border active">Ustawienia dotacji</a></li>
-            <li style="display: inline"><a href="/admin/institution" class="btn btn--without-border active">Ustawienia instytucji</a></li>
+            <li style="display: inline"><a href="/admin/donations" class="btn btn--without-border active">Ustawienia dotacji</a></li>
+            <li style="display: inline"><a href="/admin/institutions" class="btn btn--without-border active">Ustawienia instytucji</a></li>
             <li style="display: inline"><a href="/admin/users" class="btn btn--without-border active">Ustawienia użytkowników</a></li>
         </ul>
 

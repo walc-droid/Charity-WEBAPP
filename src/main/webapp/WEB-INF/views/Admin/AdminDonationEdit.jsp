@@ -8,9 +8,10 @@
 
 <section class="login-page">
 
-    <%--@elvariable id="donationEdit" type=""--%>
-    <h2>Dotacja numer ${donationEdit.id} </h2>
-        <form:form method="post" modelAttribute="donationEdit">
+    
+    <h2>Dotacja numer ${donation.id} </h2>
+        <%--@elvariable id="donation" type=""--%>
+        <form:form method="post" modelAttribute="donation">
 
     <div class="form-section form-section--columns">
         <div class="form-section--column">
@@ -75,7 +76,7 @@
             </div>
 
             <div class="form-group form-group--buttons">
-                <a class="btn" href="/admin/donation">Powrót</a>
+                <a class="btn" href="/admin/donations">Powrót</a>
             </div>
 
         </form:form>

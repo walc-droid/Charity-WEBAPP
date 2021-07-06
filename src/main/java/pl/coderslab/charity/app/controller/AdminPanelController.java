@@ -1,7 +1,6 @@
 package pl.coderslab.charity.app.controller;
 
 
-import javassist.NotFoundException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,6 +27,7 @@ public class AdminPanelController {
     private InstitutionService institutionService;
     private AppUserService appUserService;
 
+
     public AdminPanelController(DonationService donationService, CategoryService categoryService, InstitutionService institutionService, AppUserService appUserService) {
         this.donationService = donationService;
         this.categoryService = categoryService;
@@ -35,37 +35,49 @@ public class AdminPanelController {
         this.appUserService = appUserService;
     }
 
+
     @GetMapping("/controlPanel")
     private String getAdminPanel () {
         return "Admin/AdminControlPanel";
     }
 
-    @GetMapping("/donation")
+
+    @GetMapping("/donations")
     private String getDonation(Model model) {
         List<Donation> donationList = donationService.findAll();
+        List<Institution> institutionList = this.institutionService.findAll();
+
+        model.addAttribute("institutions", institutionList);
         model.addAttribute("donations",donationList);
-        return "Admin/AdminDonationList";
+        return "Admin/AdminDonationsList";
     }
 
 
-    @GetMapping("/donation/edit/{id}")
+    @GetMapping("/donations/edit/{id}")
     private String getDonationEdit (@PathVariable Long id,Model model) {
         Donation donation = this.donationService.findById(id);
-        model.addAttribute("donationEdit",donation);
+        List<Institution> institutionList = this.institutionService.findAll();
+
+        model.addAttribute("institution", institutionList);
+        model.addAttribute("donation",donation);
         return "Admin/AdminDonationEdit";
     }
 
-    @PostMapping("/donation/edit/{id}")
+
+    @PostMapping("/donations/edit/{id}")
     private String getDonationEdit (@ModelAttribute Donation donation) {
+
         this.donationService.save(donation);
-        return "redirect:/admin/donation";
+        return "redirect:/admin/donations";
     }
 
-    @GetMapping("/donation/delete/{id}")
+
+    @GetMapping("/donations/delete/{id}")
     private String deleteDonation (@PathVariable Long id) {
         this.donationService.delete(id);
-        return "redirect:/admin/donation";
+        return "redirect:/admin/donations";
     }
+
 
     @GetMapping("/users")
     private String usersList (Model model) {
@@ -79,8 +91,9 @@ public class AdminPanelController {
     private String getUsersEdit (@PathVariable Long id, Model model) {
         AppUser appUser = this.appUserService.findById(id).orElseThrow(() -> new UsernameNotFoundException("Nie znaleziono użytkownika"));
         model.addAttribute("appUser",appUser);
-        return "Admin/AdminUsersEdit";
+        return "Admin/AdminUserEdit";
     }
+
 
     @PostMapping("/users/edit/{id}")
     private String postUsersEdit(@ModelAttribute AppUser appUser) {
@@ -89,6 +102,7 @@ public class AdminPanelController {
         return "redirect:/admin/users";
     }
 
+
     @GetMapping("/users/delete/{id}")
     private String deleteUser(@PathVariable Long id) {
         this.appUserService.delete(id);
@@ -96,30 +110,53 @@ public class AdminPanelController {
     }
 
 
-    @GetMapping("/institution")
-    private String getInstitutionList () {
+    @GetMapping("/institutions")
+    private String getInstitutionList (Model model) {
+        List<Institution> institutionList = this.institutionService.findAll();
+        model.addAttribute("institutions", institutionList);
         return "Admin/AdminInstitutionsList";
     }
 
-    @GetMapping("/institution/add")
+
+    @GetMapping("/institutions/add")
     private String institutionAdd (Model model) {
-        model.addAttribute("instit",new Institution());
-        return "Admin/AdminInstitutionsAdd";
+        model.addAttribute("institution",new Institution());
+        return "Admin/AdminInstitutionAdd";
     }
 
-    @PostMapping("/institution/add")
+
+    @PostMapping("/institutions/add")
     private String institutionAdd (@Valid Institution institution, BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
             return "Admin/AdminInstitutionsAdd";
         }
 
-
         this.institutionService.save(institution);
-        return "Admin/AdminInstitutionsList";
+        return "redirect:/admin/institutions";
     }
 
 
+    @GetMapping("/institutions/edit/{id}")
+    private String institutionEdit (@PathVariable Long id, Model model) {
+        Institution institution = this.institutionService.findById(id);
+        model.addAttribute("institution",institution);
+        return "Admin/AdminInstitutionEdit";
+    }
+
+
+    @PostMapping("/institutions/edit/{id}")
+    private String institutionEditPost (@ModelAttribute Institution institution) {
+        this.institutionService.save(institution);
+        return "redirect:/admin/institutions";
+    }
+
+
+    @GetMapping("/institutions/delete/{id}")
+    private String institutionDelete (@PathVariable Long id) {
+        this.institutionService.delete(id);
+        return "redirect:/admin/institutions";
+    }
 
 
 
@@ -128,9 +165,6 @@ public class AdminPanelController {
         return this.categoryService.findAll();
     }
 
-    @ModelAttribute("institution")
-    private List<Institution> institutionList() {
-        return this.institutionService.findAll();
-    }
+
 
 }

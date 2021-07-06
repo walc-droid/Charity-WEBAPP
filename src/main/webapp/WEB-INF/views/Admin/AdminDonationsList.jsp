@@ -43,8 +43,8 @@
                 <td><c:out value="${donation.pickUpTime}"/></td>
                 <td><c:out value="${donation.pickUpComment}"/></td>
                 <td><c:out value="${donation.institution.name}"/></td>
-                <td><a href="/admin/donation/edit/${donation.id}">Edytuj</a></td>
-                <td><a href="/admin/donation/delete/${donation.id}">Usuń</a></td>
+                <td><a href="/admin/donations/edit/${donation.id}">Edytuj</a></td>
+                <td><a href="/admin/donations/delete/${donation.id}">Usuń</a></td>
             </tr>
             </c:forEach>
             <tbody>
@@ -53,7 +53,7 @@
 
     <div class="form-group form-group--buttons">
         <a class="btn" href="/admin/controlPanel">Powrót</a>
-        <a class="btn" href="/donation/add">Dodaj dotacje</a>
+        <a class="btn" href="/donations/add">Dodaj dotacje</a>
     </div>
 
 

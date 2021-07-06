@@ -10,7 +10,7 @@
 
     <%--@elvariable id="donationEdit" type=""--%>
     <h2>Dodaj instytucje </h2>
-    <form:form method="post" modelAttribute="instit">
+    <form:form method="post" modelAttribute="institution">
 
         <div class="form-section form-section--columns">
             <div class="form-section--column">
@@ -35,7 +35,7 @@
         </div>
 
             <div class="form-group form-group--buttons">
-                <a class="btn" href="/admin/institution">Powrót</a>
+                <a class="btn" href="/admin/institutions">Powrót</a>
             </div>
     </form:form>
 
